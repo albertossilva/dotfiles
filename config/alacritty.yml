@@ -1,0 +1,21 @@
+font:
+  normal:
+    family: Hack Nerd Font Mono
+    style: Regular
+  bold:
+    family: Hack Nerd Font Mono
+    style: Bold 
+  italic:
+    family: Hack Nerd Font Mono
+    style: Italic
+  size: 12
+  use_thin_strokes: true
+background_opacity: 0.98
+selection:
+  save_to_clipboard: true
+window:
+  padding:
+    x: 4
+    y: 4
+  dynamic_padding: true
+

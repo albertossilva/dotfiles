@@ -1,0 +1,68 @@
+function prompt-length() {
+  emulate -L zsh
+  local COLUMNS=${2:-$COLUMNS}
+  local -i x y=$#1 m
+  if (( y )); then
+    while (( ${${(%):-$1%$y(l.1.0)}[-1]} )); do
+      x=y
+      (( y *= 2 ));
+    done
+    local xy
+    while (( y > x + 1 )); do
+      m=$(( x + (y - x) / 2 ))
+      typeset ${${(%):-$1%$m(l.x.y)}[-1]}=$m
+    done
+  fi
+  echo $x
+}
+
+function fill-line() {
+  emulate -L zsh
+  local left_len=$(prompt-length $1)
+  local right_len=$(prompt-length $2 9999)
+  local pad_len=$((COLUMNS - left_len - right_len - ${ZLE_RPROMPT_INDENT:-1}))
+  if (( pad_len < 1 )); then
+    echo -E - ${1}
+  else
+    local pad=${(pl.$pad_len.. .)}  # pad_len spaces
+    echo -E - ${1}${pad}${2}
+  fi
+}
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+
+zstyle ':vcs_info:*' enable git cvs svn
+
+autoload -U colors && colors
+
+vcs_info_wrapper() {
+  vcs_info
+  if [ -n "$vcs_info_msg_0_" ]; then
+    echo "${vcs_info_msg_0_}"
+  fi
+}
+
+function set-prompt() {
+  emulate -L zsh
+
+  local git_branch="$(vcs_info_wrapper)"
+
+  local node_version="$(node --version 2>/dev/null)"
+
+  local top_left="%F{blue}%~%f %F{yellow}${git_branch}"
+  local top_right="%F{240}node:${node_version}%f"
+  local bottom_left='%B%F{%(?.green.red)}%(?:❯:✘)%f%b '
+
+  PROMPT="$(fill-line "$top_left" "$top_right")"$'\n'$bottom_left
+}
+
+setopt noprompt{bang,subst} prompt{cr,percent,sp}
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:git:*' formats '(%b) %a%m%u%c'
+
+add-zsh-hook precmd set-prompt
