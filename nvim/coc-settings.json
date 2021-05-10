@@ -1,8 +1,11 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript"],
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "css", "markdown"],
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": true,
   "diagnostic.virtualTextLines": 20,
+  "prettier.printWidth": 120,
+  "prettier.useTabs": false,
+  "prettier.tabWidth": 2,
   "cSpell.userWords": [
     "flowie",
     "gnip",
