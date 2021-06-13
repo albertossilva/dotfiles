@@ -15,8 +15,10 @@ else
 	set clipboard+=unnamedplus
 endif
 
+set smartindent
 set tabstop=2
 set shiftwidth=2
+set expandtab
 set title
 set titlestring=%{expand(\"%:~:.:f\")}\ (%{strftime('%Y-%m-%d\ %H:%M',getftime(expand('%')))})
 set fdm=syntax
@@ -49,7 +51,7 @@ set number relativenumber
 set nofoldenable
 
 set wildmenu
-set wildignore+=*/tmp/*,*/.git/*,*/dist/*,*/build/*,*/node_modules/*,*/coverage/*,*/.nyc_output/*,*.so,*.swp,*.zip,*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,.nvimlog,*.min.*
+set wildignore+=*/tmp/*,*/.git/*,*/dist/*,*/build/*,*/node_modules/*,*/coverage/*,*/.nyc_output/*,*.so,*.swp,*.zip,*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,.nvimlog,*.min.*,*/.stack-work/*
 set encoding=UTF-8
 
 " open new split panes to right and below

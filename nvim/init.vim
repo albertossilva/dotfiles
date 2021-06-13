@@ -4,6 +4,12 @@ let g:python3_host_prog=expand('/usr/local/bin/python3')
 call plug#begin('~/.dotfiles/nvim/plugged')
 	" Theme
 	Plug 'morhetz/gruvbox', { 'as': 'gruvbox' }
+	Plug 'neovimhaskell/haskell-vim'
+	Plug 'alx741/vim-hindent'
+	Plug 'w0rp/ale'
+	Plug 'parsonsmatt/intero-neovim'
+
+	Plug 'digitaltoad/vim-pug'
 
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -64,6 +70,7 @@ source ~/.dotfiles/nvim/coc.vim
 source ~/.dotfiles/nvim/editor.vim
 source ~/.dotfiles/nvim/nerdtree.vim
 source ~/.dotfiles/nvim/shortcuts.vim
+source ~/.dotfiles/nvim/haskell.vim
 
 " Telescope
 nnoremap <Leader>f <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({

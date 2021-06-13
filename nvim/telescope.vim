@@ -29,7 +29,9 @@ require('telescope').setup{
     --   -- TODO add builtin options.
     -- },
     -- file_sorter =  require'telescope.sorters'.get_fuzzy_file ,
-    file_ignore_patterns = {},
+    file_ignore_patterns = {
+      '*.stack-work'
+    },
     -- generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     shorten_path = true,
     preview_cutoff = 120,

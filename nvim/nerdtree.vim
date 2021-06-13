@@ -3,7 +3,7 @@ let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 let NERDTreeStatusline=''
 let NERDTreeDirArrows = 1
-let NERDTreeIgnore=['\.pyc$', '\.o$', '\.obj$', '\.svn$', '\.swp$', '\.class$', '\.hg$', '\.DS_Store$', '.nvimlog$', '^node_modules$']
+let NERDTreeIgnore=['\.pyc$', '\.o$', '\.obj$', '\.svn$', '\.swp$', '\.class$', '\.hg$', '\.DS_Store$', '.nvimlog$', '^node_modules$', '^\.stack-work$']
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |

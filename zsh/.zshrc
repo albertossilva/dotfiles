@@ -23,7 +23,7 @@ export PATH=~/.nvim/bin:$PATH
 source $DOTFILES/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DOTFILES/zsh/.zsh_prompt
 source $DOTFILES/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-source $DOTFILES/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# source $DOTFILES/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -44,6 +44,8 @@ nvm() {
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
   nvm "$@"
 }
+
+[ -f "/Users/silvaalb/.ghcup/env" ] && source "/Users/silvaalb/.ghcup/env" # ghcup-env
 
 #ALIASES
 source $DOTFILES/zsh/.zsh_aliases
@@ -138,7 +140,7 @@ lfcd () {
 bindkey -s '^o' 'lfcd\n'
 
 # VI MODE
-# bindkey -v
+bindkey -v
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
