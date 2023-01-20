@@ -1,0 +1,6 @@
+require("config.abbreviations")
+require("config.autocommands")
+require("config.indentation")
+require("config.options")
+require("config.keymaps")
+require("config.plugins")

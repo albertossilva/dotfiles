@@ -1,0 +1,12 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript"],
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": true,
+  "diagnostic.virtualTextLines": 20,
+  "cSpell.userWords": [
+    "flowie",
+    "gnip",
+    "powertrack"
+  ]
+}
+

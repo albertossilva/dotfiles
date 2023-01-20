@@ -1,0 +1,19 @@
+{
+  "language": "en",
+  "version": "0.1",
+  "words": [
+    "nvim",
+    "builtins",
+    "prettierd",
+    "stylua",
+    "gitsigns",
+    "ltrs"
+  ],
+  "ignorePaths": [],
+  "dictionaries": [
+    "en_US",
+    "en_GB",
+    "companies",
+    "softwareTerms"
+  ]
+}

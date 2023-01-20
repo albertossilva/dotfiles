@@ -1,0 +1,37 @@
+typeset -Ag abbreviations
+
+abbreviations=(
+    "gcm" "git commit -m '"
+    "gca" "git commit -a -m '"
+    "gcma" "git commit --amend --no-edit"
+    "ga" "git add"
+    "gpp" "git push"
+    "gpl" "git pull"
+    "gs" "git status"
+    "gl" "git l"
+    "grc" "git rebase --continue"
+    "gl" "git ls-tree --name-only -r HEAD"
+    "gfetch" "git fetch origin --prune" 
+    "gtree" "git ls-tree --name-only -r HEAD"
+    "gl" "git ls-tree --name-only -r HEAD"
+    "gitchanges" "git log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status"
+    "ni" "npm install --save"
+    "tu" "npm run test:unit --"
+    "tuw" "npm run test:unit -- --watch"
+)
+
+magic-abbrev-expand() {
+     local left prefix
+     left=$(echo -nE "$LBUFFER" | sed -e "s/[_a-zA-Z0-9]*$//")
+     prefix=$(echo -nE "$LBUFFER" | sed -e "s/.*[^_a-zA-Z0-9]\([_a-zA-Z0-9]*\)$/\1/")
+     LBUFFER=$left${abbreviations[$prefix]:-$prefix}" "
+}
+
+no-magic-abbrev-expand() {
+    LBUFFER+=' '
+}
+
+zle -N magic-abbrev-expand
+zle -N no-magic-abbrev-expand
+bindkey   " "    magic-abbrev-expand
+bindkey   "^x "  no-magic-abbrev-expand
