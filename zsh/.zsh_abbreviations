@@ -16,8 +16,10 @@ abbreviations=(
     "gl" "git ls-tree --name-only -r HEAD"
     "gitchanges" "git log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status"
     "ni" "npm install --save"
-    "tu" "npm run test:unit --"
-    "tuw" "npm run test:unit -- --watch"
+    "test" "npm run test --"
+    "testw" "npm run test -- --watch"
+    "testu" "npm run test:unit --"
+    "testuw" "npm run test:unit -- --watch"
 )
 
 magic-abbrev-expand() {

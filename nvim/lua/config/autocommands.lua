@@ -10,7 +10,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "lir",
     "DressingSelect",
     "tsplayground",
-    "Markdown",
   },
   callback = function()
     vim.cmd [[

@@ -29,10 +29,6 @@ null_ls.setup({
     code_actions.gitsigns,
 
     code_actions.ltrs,
-    diagnostics.ltrs,
-
-    code_actions.refactoring.with({
-      filetypes = { "go", "javascript", "python", "typescript" }
-    }),
+    diagnostics.ltrs
   },
 })

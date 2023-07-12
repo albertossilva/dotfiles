@@ -19,7 +19,6 @@ local options = {
   completeopt = { "menu", "menuone", "noinsert", "noselect" }, -- mostly just for cmp
   pumheight = 10,                          -- pop up menu height
 
-  mouse = "a",                             -- allow the mouse to be used in neovim
   showtabline = 0,                         -- always show tabs
   smartcase = true,                        -- smart case
   smartindent = true,                      -- make indenting smarter again

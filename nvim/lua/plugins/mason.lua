@@ -3,6 +3,7 @@ return {
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
+    "j-hui/fidget.nvim",
     "jose-elias-alvarez/null-ls.nvim",
     "jayp0521/mason-null-ls.nvim",
   },
@@ -31,7 +32,7 @@ return {
       "html",
       "jsonls",
       "rust_analyzer",
-      "sumneko_lua",
+      "lua_ls",
       "tsserver",
       "jdtls",
       "kotlin_language_server",
@@ -63,7 +64,6 @@ return {
         "eslint_d",
         "cspell",
         "ktlint",
-        "refactoring",
         "golangci_lint",
         "goimports_reviser"
       },

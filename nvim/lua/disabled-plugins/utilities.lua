@@ -1,7 +1,6 @@
 return {
   "rcarriga/nvim-notify",
   -- Lua Development
-  "nvim-lua/plenary.nvim",
   "nvim-lua/popup.nvim",
   -- Development helpers
   "editorconfig/editorconfig-vim",

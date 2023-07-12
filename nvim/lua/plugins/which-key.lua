@@ -156,6 +156,7 @@ return{
       },
       s = {
         name = "Search",
+        g = { "<cmd>Telescope git_files<cr>", "Git Files" },
         B = { "<cmd>Telescope buffers<cr>", "Buffers" },
         b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
         c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },

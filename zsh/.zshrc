@@ -9,7 +9,6 @@ export GPG_TTY=`tty`
 export LESS="-XRF" # Beautiful less
 export GREP_OPTIONS=--color=always
 
-export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
 source ~/.dotfiles/zsh/gruvbox_256palette_osx.sh
 
 # BREW
@@ -33,8 +32,6 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=black,fg=yellow,bold'
 
 source $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
-# Fuzzy finder
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.dotfiles/forgit
 
 export NVM_DIR="$HOME/.nvm"
@@ -137,5 +134,18 @@ bindkey -v
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
+
+eval $(thefuck --alias)
+
+export MCFLY_KEY_SCHEME=vim
+export MCFLY_FUZZY=2
+export MCFLY_RESULTS=20
+export MCFLY_INTERFACE_VIEW=BOTTOM
+export MCFLY_PROMPT="❯"
+
+export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
+# eval "$(mcfly init zsh)"
+# Fuzzy finder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(starship init zsh)"
