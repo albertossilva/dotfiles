@@ -2,7 +2,10 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   dependencies = {
-    "nvim-treesitter/nvim-treesitter"
+    "nvim-treesitter/playground",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    "nvim-treesitter/nvim-treesitter-context",
   },
   config = function()
     pcall(require('nvim-treesitter.install').update { with_sync = true })
@@ -18,13 +21,13 @@ return {
         'gitignore',
         'go',
         'haskell',
-        'help',
         'html',
         'javascript',
         'json',
         'kotlin',
         'lua',
         'markdown',
+        'markdown_inline',
         'python',
         'rust',
         'tsx',
@@ -41,6 +44,26 @@ return {
         enable = true,
       },
       indent = { enable = true, disable = { "python" } },
+      refactor = {
+        highlight_definitions = { enable = true },
+        highlight_current_scope = { enable = false },
+
+        smart_rename = {
+          enable = true,
+          keymaps = {
+            -- mapping to rename reference under cursor
+            smart_rename = "grr",
+          },
+        },
+
+        navigation = {
+          enable = true,
+          keymaps = {
+            goto_definition = "gnd", -- mapping to go to definition of symbol under cursor
+            list_definitions = "gnD", -- mapping to list all definitions in current file
+          },
+        },
+      },
       context_commentstring = {
         enable = true,
         enable_autocmd = false,

@@ -32,39 +32,38 @@ local function lsp_highlight_document(client, bufnr)
 end
 
 vim.diagnostic.config({
-  -- virtual_text = false, -- disable the annoying text on the right side of the line
+  virtual_text = false, -- disable the annoying text on the right side of the line
   update_in_insert = true, -- check if this option makes larger codebases too slow
+})
+
+set_keymap({
+  ["[d"] = '<Cmd>Lspsaga diagnostic_jump_prev<CR>',
+  ["]d"] = '<Cmd>Lspsaga diagnostic_jump_next<CR>',
 })
 
 local M = {}
 local cmp_nvim_lsp = unpack(deps)
 M.capabitilies = cmp_nvim_lsp.default_capabilities()
-M.on_attach = function(client, buffer)
-  local bufopts = { noremap = true, silent = true, buffer = buffer }
-  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
+M.on_attach = function(client, bufnr)
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   set_keymap({
-    ["<leader>D"] = vim.lsp.buf.type_definition,
-    ["<leader>k"] = vim.lsp.buf.signature_help,
-    ["<leader>fmt"] = vim.lsp.buf.format,
+    ["<C-k>"] = vim.lsp.buf.signature_help,
+    ["<Leader>o"] = '<Cmd>Lspsaga outline<CR>',
+    ["<Leader>D"] = vim.lsp.buf.type_definition,
+    ["<Leader>ca"] = '<Cmd>Lspsaga code_action<CR>',
+    ["<Leader>."] = '<Cmd>Lspsaga code_action<CR>',
+    ["<Leader>fmt"] = function()
+      vim.lsp.buf.format({ async = true })
+    end,
+    ["<Leader>rn"] = '<Cmd>Lspsaga rename<CR>',
+    ["K"] = '<Cmd>Lspsaga hover_doc<CR>',
+    ["gD"] = '<Cmd>Lspsaga finder def+ref+imp<CR>',
+    ["gd"] = '<Cmd>Lspsaga goto_definition<CR>',
+    ["gi"] = '<Cmd>Lspsaga finder imp<CR>',
+    ["gr"] = '<Cmd>Lspsaga finder ref<CR>',
+    }, bufopts)
 
-    ["K"] = vim.lsp.buf.hover,
-    ["gd"] = "<cmd>Telescope lsp_definitions<CR>",
-    ["gD"] = "<cmd>Telescope lsp_declarations<CR>",
-    ["gr"] = "<cmd>Telescope lsp_references<CR>",
-    ["gi"] = "<cmd>Telescope lsp_implementations<CR>",
-
-    ["<leader>r"] = "<cmd>Telescope lsp_document_symbols<CR>",
-    ["<leader>d"] = vim.diagnostic.open_float,
-    ["<leader>rn"] = vim.lsp.buf.rename,
-    ["<leader>ca"] = vim.lsp.buf.code_action,
-    ["<leader>."] = vim.lsp.buf.code_action,
-    ["go"] = vim.diagnostic.open_float,
-    ["<leader>lq"] = vim.diagnostic.setloclist,
-    ["[d"] = "<cmd>lua vim.diagnostic.goto_prev({ border = \"rounded\" })<CR>",
-    ["]d"] = "<cmd>lua vim.diagnostic.goto_next({ border = \"rounded\" })<CR>",
-  }, bufopts)
-
-  lsp_highlight_document(client, buffer)
+  lsp_highlight_document(client, bufnr)
 
   if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false

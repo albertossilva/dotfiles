@@ -1,6 +1,12 @@
-require("config.abbreviations")
-require("config.autocommands")
-require("config.indentation")
-require("config.options")
-require("config.keymaps")
-require("config.plugins")
+-- Setup globals that I expect to be always available.
+require "utils.globals"
+
+-- Turn off builtin plugins I do not use.
+-- require "tj.disable_builtin"
+require "utils.disable_builtin"
+
+require "start.abbreviations"
+require "start.autocommands"
+require "start.options"
+require "start.keymaps"
+require "start.plugins"

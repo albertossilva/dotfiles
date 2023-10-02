@@ -1,7 +1,6 @@
 return {
   "kyazdani42/nvim-tree.lua",
   dependencies = {
-    "rcarriga/nvim-notify",
     "kyazdani42/nvim-web-devicons"
   },
   config = function()

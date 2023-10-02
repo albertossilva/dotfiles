@@ -1,7 +1,8 @@
-return{
+return {
   "folke/which-key.nvim",
   config = function()
     local which_key = require("which-key")
+    local icons = require("utils.icons")
 
     local setup = {
       plugins = {
@@ -33,11 +34,7 @@ return{
         -- ["<cr>"] = "RET",
         -- ["<tab>"] = "TAB",
       },
-      icons = {
-        breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-        separator = "➜", -- symbol used between a key and it's label
-        group = "+", -- symbol prepended to a group
-      },
+      icons = icons.which_key,
       popup_mappings = {
         scroll_down = "<c-d>", -- binding to scroll down inside the popup
         scroll_up = "<c-u>", -- binding to scroll up inside the popup
@@ -81,7 +78,6 @@ return{
     local mappings = {
       ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
       ["w"] = { "<cmd>w!<CR>", "Save" },
-      ["q"] = { "<cmd>q!<CR>", "Quit" },
       ["c"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
       ["f"] = {
         "<cmd>Telescope find_files<cr>",
@@ -166,6 +162,7 @@ return{
         R = { "<cmd>Telescope registers<cr>", "Registers" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         C = { "<cmd>Telescope commands<cr>", "Commands" },
+        i = { "<cmd>Lspsaga incoming_calls<cr>", "Incoming Calls" },
       }
     }
 
