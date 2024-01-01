@@ -69,8 +69,7 @@ keymap("n", "<F3>", ":NvimTreeFocus<CR>", opts)
 keymap("n", "<leader><leader>", ":Telescope find_files<CR>", opts)
 
 --Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.line(vim.fn.visualmode())<CR>')
+keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
 
 --Line numbers
 keymap("n", "<F7>", ":set norelativenumber<cr>", opts)

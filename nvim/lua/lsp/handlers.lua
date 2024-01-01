@@ -47,7 +47,7 @@ M.capabitilies = cmp_nvim_lsp.default_capabilities()
 M.on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   set_keymap({
-    ["<C-k>"] = vim.lsp.buf.signature_help,
+    ["<Leader>-k"] = vim.lsp.buf.signature_help,
     ["<Leader>o"] = '<Cmd>Lspsaga outline<CR>',
     ["<Leader>D"] = vim.lsp.buf.type_definition,
     ["<Leader>ca"] = '<Cmd>Lspsaga code_action<CR>',

@@ -6,10 +6,23 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
     "JoosepAlviste/nvim-ts-context-commentstring",
     "nvim-treesitter/nvim-treesitter-context",
+    "styled-components/vim-styled-components",
   },
   config = function()
     pcall(require('nvim-treesitter.install').update { with_sync = true })
+    require('treesitter-context').setup{
+      enable = true,
+      max_lines = 1,
+      min_window_height = 40,
+      line_numbers = true,
+      multiline_threshold = 1,
+      trim_scope = 'outer',
+      mode = 'cursor',
+      separator = nil,
+    }
     require("nvim-treesitter.configs").setup({
+      ignore_install = {},
+      modules = {},
       sync_install = true,
       ensure_installed = {
         'bash',
