@@ -6,6 +6,7 @@ return {
       "neovim/nvim-lspconfig",
       "jose-elias-alvarez/null-ls.nvim",
       "jayp0521/mason-null-ls.nvim",
+      "pmizio/typescript-tools.nvim",
     },
     config = function()
       -- Check if all dependencies are installed, otherwise exits early
@@ -60,6 +61,18 @@ return {
 
       -- then, setup null_ls
       require("lsp.null-ls")
+
+      -- require("typescript-tools").setup({
+      --   settings = {
+      --     jsx_close_tag = {
+      --       enable = false,
+      --       filetypes = { "javascriptreact", "typescriptreact" },
+      --     },
+      --     tsserver_plugins = {
+      --       "@styled/typescript-styled-plugin",
+      --     },
+      --   },
+      -- })
     end,
   },
   -- {
@@ -74,32 +87,33 @@ return {
   --   end,
   --}, {
   {
-    'nvimdev/lspsaga.nvim',
-    after = 'nvim-lspconfig',
-    config = function ()
+    "nvimdev/lspsaga.nvim",
+    after = "nvim-lspconfig",
+    config = function()
       local keys = {
-        vsplit = 'v',
-        split = 'x',
-        shuttle = '[w',
-        toggle_or_open = 'o',
-        jump = 'e',
-        tabe = 't',
-        tabnew = 'r',
-        quit = 'q',
-        close = '<C-c>k',
+        vsplit = "v",
+        split = "x",
+        shuttle = "[w",
+        toggle_or_open = "o",
+        jump = "e",
+        tabe = "t",
+        tabnew = "r",
+        quit = "q",
+        close = "<C-c>k",
       }
-      require('lspsaga').setup({
-        event = 'LspAttach',
-        ft = {'typescript'},
+      require("lspsaga").setup({
+        event = "LspAttach",
+        ft = { "typescript" },
         callhierarchy = { keys = keys },
         finder = { keys = keys },
         outline = { keys = keys, close_after_jump = true },
       })
-    end
-  }, {
-    'numToStr/Comment.nvim',
+    end,
+  },
+  {
+    "numToStr/Comment.nvim",
     config = function()
-        require('Comment').setup()
-    end
-  }
+      require("Comment").setup()
+    end,
+  },
 }

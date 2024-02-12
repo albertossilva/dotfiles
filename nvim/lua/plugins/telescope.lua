@@ -4,13 +4,13 @@ return {
     dependencies = {
       { "junegunn/fzf", build = ":call fzf#install()" },
       "nvim-lua/plenary.nvim",
-    }
+    },
   },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-telescope/telescope-media-files.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
       local telescope = require("telescope")
@@ -20,14 +20,17 @@ return {
       telescope.setup({
         extensions = {
           fzf = {
-          fuzzy = true, -- false will only do exact matching
-          override_generic_sorter = true, -- override the generic sorter
-          override_file_sorter = true, -- override the file sorter
-          case_mode = "smart_case",
+            fuzzy = true,             -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case",
           },
         },
         defaults = {
           sorting_strategy = "ascending",
+          file_ignore_patterns = { "node_modules", "build", "dist", "artifacts", "package-lock.json" },
+          file_sorter = require("telescope.sorters").get_fuzzy_file,
+          generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
           path_display = { "smart" },
           prompt_prefix = icons.ui.Telescope .. " ",
           selection_caret = icons.ui.Telescope_selection_caret,
@@ -35,6 +38,9 @@ return {
             prompt_position = "top",
             height = 0.9,
             width = 0.9,
+            vertical = {
+              mirror = false,
+            },
           },
           mappings = {
             i = {
@@ -53,10 +59,6 @@ return {
 
       telescope.load_extension("media_files")
       telescope.load_extension("fzf")
-    end
-  }
+    end,
+  },
 }
-
-
-
-

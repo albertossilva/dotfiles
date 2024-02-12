@@ -32,13 +32,13 @@ local function lsp_highlight_document(client, bufnr)
 end
 
 vim.diagnostic.config({
-  virtual_text = false, -- disable the annoying text on the right side of the line
+  virtual_text = false,   -- disable the annoying text on the right side of the line
   update_in_insert = true, -- check if this option makes larger codebases too slow
 })
 
 set_keymap({
-  ["[d"] = '<Cmd>Lspsaga diagnostic_jump_prev<CR>',
-  ["]d"] = '<Cmd>Lspsaga diagnostic_jump_next<CR>',
+  ["[d"] = "<Cmd>Lspsaga diagnostic_jump_prev<CR>",
+  ["]d"] = "<Cmd>Lspsaga diagnostic_jump_next<CR>",
 })
 
 local M = {}
@@ -48,20 +48,20 @@ M.on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   set_keymap({
     ["<Leader>-k"] = vim.lsp.buf.signature_help,
-    ["<Leader>o"] = '<Cmd>Lspsaga outline<CR>',
+    ["<Leader>o"] = "<Cmd>Lspsaga outline<CR>",
     ["<Leader>D"] = vim.lsp.buf.type_definition,
-    ["<Leader>ca"] = '<Cmd>Lspsaga code_action<CR>',
-    ["<Leader>."] = '<Cmd>Lspsaga code_action<CR>',
+    ["<Leader>ca"] = "<Cmd>Lspsaga code_action<CR>",
+    ["<Leader>."] = "<Cmd>Lspsaga code_action<CR>",
     ["<Leader>fmt"] = function()
       vim.lsp.buf.format({ async = true })
     end,
-    ["<Leader>rn"] = '<Cmd>Lspsaga rename<CR>',
-    ["K"] = '<Cmd>Lspsaga hover_doc<CR>',
-    ["gD"] = '<Cmd>Lspsaga finder def+ref+imp<CR>',
-    ["gd"] = '<Cmd>Lspsaga goto_definition<CR>',
-    ["gi"] = '<Cmd>Lspsaga finder imp<CR>',
-    ["gr"] = '<Cmd>Lspsaga finder ref<CR>',
-    }, bufopts)
+    ["<Leader>rn"] = "<Cmd>Lspsaga rename<CR>",
+    ["K"] = "<Cmd>Lspsaga hover_doc<CR>",
+    ["gD"] = "<Cmd>Lspsaga finder def+ref+imp<CR>",
+    ["gd"] = "<Cmd>Lspsaga goto_definition<CR>",
+    ["gi"] = "<Cmd>Lspsaga finder imp<CR>",
+    ["gr"] = "<Cmd>Lspsaga finder ref<CR>",
+  }, bufopts)
 
   lsp_highlight_document(client, bufnr)
 
