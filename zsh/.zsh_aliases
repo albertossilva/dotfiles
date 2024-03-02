@@ -1,7 +1,5 @@
-alias ctags="`brew --prefix`/bin/ctags"
 alias shit="fuck"
 alias docker="nerdctl"
-
 
 # PS
 alias psa="ps aux"
@@ -38,6 +36,4 @@ alias k9='kill -9'
 # TODO
 alias t='todo.sh'
 
-# Finder
-alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+alias pbcopy='xclip -selection clipboard'

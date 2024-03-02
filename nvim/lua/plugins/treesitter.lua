@@ -33,7 +33,7 @@ return {
         'tsx',
         'typescript',
         'vim',
-        'yaml',
+        -- 'yaml',
       },
       highlight = {
         enable = true, -- false will disable the whole extension

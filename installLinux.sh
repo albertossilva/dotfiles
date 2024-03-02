@@ -1,17 +1,8 @@
-#!/bin/bash
-brew install --cask macvim
-brew bundle
-
-cp -n /usr/local/opt/todo-txt/todo.cfg ~/.todo.cfg
-
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-
-sh ~/.dotfiles/installLatestDelta.sh
-sh ~/.dotfiles/installLatestVim.sh
-
-curl -sSLO git.io/forgit
-mv forgit ~/.dotfiles
+# sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+# sudo apt update
+# sudo apt install shutter gimp vlc synaptic i3 cargo vim neovim zsh git grub-customizer ripgrep rofi thefuck jq lxappearance pulseaudio arandr feh tmux rofi jq silversearch-ag
+# # dependencies to build allacritty
+# sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 
 rm -rf ~/.zshrc
 rm -rf ~/.tmux.conf
@@ -19,7 +10,7 @@ rm -rf ~/.tmux.conf.local
 rm -rf ~/.gitconfig
 rm -rf ~/.config/nvim
 rm -rf ~/.config/starship.toml
-rm -rf ~/.config/alacritty/alacritty.toml
+rm -rf ~/.config/alacritty/alacritty.yml
 rm -rf ~/.config/bat/config
 rm -rf ~/.vim
 
@@ -37,6 +28,6 @@ mkdir -p ~/.config/bat
 ln -s ~/.dotfiles/nvim ~/.config/nvim
 ln -s ~/.dotfiles/nvim/vimrc.vim ~/.vimrc
 ln -s ~/.dotfiles/vim ~/.vim
-ln -s ~/.dotfiles/config/alacritty.toml ~/.config/alacritty/alacritty.toml
+ln -s ~/.dotfiles/config/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -s ~/.dotfiles/config/bat ~/.config/bat/config
 ln -s ~/.dotfiles/config/starship.toml ~/.config/starship.toml

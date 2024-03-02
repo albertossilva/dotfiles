@@ -32,13 +32,10 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=black,fg=yellow,bold'
 
 source $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
-source ~/.dotfiles/forgit
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [ -f "/Users/silvaalb/.ghcup/env" ] && source "/Users/silvaalb/.ghcup/env" # ghcup-env
-
 
 # LOCAL
 test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"
@@ -62,6 +59,7 @@ setopt EXTENDED_GLOB     # Use extended globbing syntax.
 # HISTORY
 export HISTSIZE=10000 # Maximum events for internal history
 export SAVEHIST=10000 # Maximum events in history file
+export HISTFILE=~/.zsh_history
 
 setopt EXTENDED_HISTORY       # Write the history file in the ':start:elapsed;command' format.
 setopt SHARE_HISTORY          # Share history between all sessions.
@@ -135,7 +133,7 @@ bindkey -v
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
 export MCFLY_KEY_SCHEME=vim
 export MCFLY_FUZZY=2
@@ -144,8 +142,8 @@ export MCFLY_INTERFACE_VIEW=BOTTOM
 export MCFLY_PROMPT="❯"
 
 export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
-# eval "$(mcfly init zsh)"
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source "$HOME/.cargo/env"
 
 eval "$(starship init zsh)"
