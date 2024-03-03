@@ -6,3 +6,12 @@ forgit
 
 tj_nvim
 nvim_working
+config/Microsoft*
+config/teams
+config/autostart
+config/mimeapps.list
+config/dconf
+config/pavucontrol.ini
+config/GIMP
+config/gtk-3.0
+config/archlinux-tweak-tool
