@@ -20,11 +20,11 @@
   # branch
   b = branch -v                     # branch (verbose)
   last = diff HEAD^                 # diff last committed change
+  staash = stash --all
 
   # log
-  l = log --graph --date=short --pretty=format:\"%C(white)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%aN]%Creset\"
+  l = log --graph --date=short --pretty=format:\"%C(white)%ad %C(yellow)%h%C(green)%d %C(blue)%s %C(magenta) [%aN]%Creset\"
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
-  simple = log --pretty=format:\" * %s\"
 
   # remote
   r = remote -v                     # show remotes (verbose)
@@ -102,4 +102,6 @@
 [init]
 	defaultBranch = main
 [gpg]
-	program = gpg
+  format = ssh
+[maintenance]
+  repo = /Users/silvaalb/Work/commerceNext/checkout-service-node18
