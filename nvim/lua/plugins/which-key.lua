@@ -86,6 +86,7 @@ return {
         '<cmd>lua require("illuminate").goto_next_reference({ reverse=true, wrap=true })<cr>',
         "Previous occurence",
       },
+      ["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
 
       f = {
         name = "Find",
