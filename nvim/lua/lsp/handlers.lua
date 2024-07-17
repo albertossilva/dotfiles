@@ -49,8 +49,8 @@ M.on_attach = function(client, bufnr)
   set_keymap({
     ["<Leader>-k"] = vim.lsp.buf.signature_help,
     ["<Leader>o"] = "<Cmd>Lspsaga outline<CR>",
-    ["<Leader>D"] = vim.lsp.buf.type_definition,
-    ["<Leader>ca"] = "<Cmd>Lspsaga code_action<CR>",
+    -- ["<Leader>D"] = vim.lsp.buf.type_definition,
+    -- ["<Leader>ca"] = "<Cmd>Lspsaga code_action<CR>",
     ["<Leader>."] = "<Cmd>Lspsaga code_action<CR>",
     ["<Leader>fmt"] = function()
       vim.lsp.buf.format({ async = true })

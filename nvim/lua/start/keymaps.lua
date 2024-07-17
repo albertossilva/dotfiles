@@ -13,12 +13,6 @@ keymap("n", "<Right>", "<NOP>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
---Hop
---place this in one of your configuration file(s)
-keymap("n", "<leader>jf", ":HopWord<cr>", opts)
-keymap("n", "<leader>jk", ":HopWordCurrentLine<cr>", opts)
-keymap("n", "<leader>jj", ":HopPattern<cr>", opts)
-
 --Normal --
 --Better window navigation
 keymap("n", "<C-H>", "<C-w>h", opts)
@@ -63,13 +57,6 @@ keymap("v", ">", ">gv", opts)
 
 --NvimTree
 keymap("n", "<leader>re", ":NvimTreeFindFile<CR>", opts)
-keymap("n", "<F3>", ":NvimTreeFocus<CR>", opts)
-
---Telescope
-keymap("n", "<leader><leader>", ":Telescope find_files<CR>", opts)
-
---Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
 
 --Line numbers
 keymap("n", "<F7>", ":set norelativenumber<cr>", opts)
