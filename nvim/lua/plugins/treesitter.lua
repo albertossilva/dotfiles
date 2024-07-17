@@ -42,6 +42,7 @@ return {
         "haskell",
         "html",
         "javascript",
+        "java",
         "json",
         "kotlin",
         "lua",
