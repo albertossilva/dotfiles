@@ -1,5 +1,4 @@
 return {
-  "lunarvim/onedarker.nvim",
   "folke/tokyonight.nvim",
   "dracula/vim",
   { "catppuccin/nvim", branch = "main", name = "catppuccin" },
@@ -8,6 +7,6 @@ return {
     "ellisonleao/gruvbox.nvim",
     config = function()
       vim.cmd.colorscheme("gruvbox")
-    end
+    end,
   },
 }

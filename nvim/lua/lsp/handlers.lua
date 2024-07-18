@@ -4,6 +4,11 @@ if not status_ok then
   return
 end
 
+local function k(keymap, action, desc, buffer)
+  local opts = { noremap = true, silent = true, buffer = buffer, desc = desc }
+  vim.keymap.set("n", keymap, action, opts)
+end
+
 local function set_keymap(keymaps, opts)
   opts = opts or { noremap = true, silent = true }
   for keymap, action in pairs(keymaps) do
@@ -46,12 +51,11 @@ local cmp_nvim_lsp = unpack(deps)
 M.capabitilies = cmp_nvim_lsp.default_capabilities()
 M.on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  k("<Leader>.", "<Cmd>Lspsaga code_action<CR>", "Code Action", bufnr)
+  k("<Leader>o", "<Cmd>Lspsaga outline<CR>", "Outline", bufnr)
   set_keymap({
     ["<Leader>-k"] = vim.lsp.buf.signature_help,
-    ["<Leader>o"] = "<Cmd>Lspsaga outline<CR>",
     -- ["<Leader>D"] = vim.lsp.buf.type_definition,
-    -- ["<Leader>ca"] = "<Cmd>Lspsaga code_action<CR>",
-    ["<Leader>."] = "<Cmd>Lspsaga code_action<CR>",
     ["<Leader>fmt"] = function()
       vim.lsp.buf.format({ async = true })
     end,
@@ -60,6 +64,7 @@ M.on_attach = function(client, bufnr)
     ["gD"] = "<Cmd>Lspsaga finder def+ref+imp<CR>",
     ["gd"] = "<Cmd>Lspsaga goto_definition<CR>",
     ["gi"] = "<Cmd>Lspsaga finder imp<CR>",
+    ["gI"] = "<Cmd>Lspsaga incoming_calls<CR>",
     ["gr"] = "<Cmd>Lspsaga finder ref<CR>",
   }, bufopts)
 

@@ -1,139 +1,248 @@
 return {
-  "folke/which-key.nvim",
-  event = "VeryLazy",
-  dependencies = {
-    { "echasnovski/mini.nvim",  version = "*" },
-    { "echasnovski/mini.icons", version = "*" },
-  },
-  config = function()
-    local which_key = require("which-key")
-    local setup = {
-      preset = "classic",
-      win = {
-        border = "rounded",
-        wo = {
-          winblend = 0,
-        },
-      },
-      layout = {
-        width = { min = 20, max = 50 },
-        spacing = 3,
-        align = "left",
-      },
-      delay = function(ctx)
-        return ctx.plugin and 0 or 10
-      end,
-    }
-    --     g = {
-    --       name = "Git",
-    --       -- g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-    --       j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-    --       k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-    --       l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-    --       p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-    --       r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-    --       R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-    --       s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-    --       u = {
-    --         "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-    --         "Undo Stage Hunk",
-    --       },
-    --       o = { "<cmd>Telescope git_status<cr>", "Open git status" },
-    --       b = { "<cmd>Telescope git_branches<cr>", "Switch to branch" },
-    --       c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    --       d = {
-    --         "<cmd>Gitsigns diffthis HEAD<cr>",
-    --         "Diff",
-    --       },
-    --     },
-    --
-    --     l = {
-    --       name = "LSP",
-    --       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    --       d = {
-    --         "<cmd>Telescope diagnostics<cr>",
-    --         "Document Diagnostics",
-    --       },
-    --       w = {
-    --         "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-    --         "Workspace Diagnostics",
-    --       },
-    --       f = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format" },
-    --       i = { "<cmd>LspInfo<cr>", "Info" },
-    --       I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
-    --       j = {
-    --         "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
-    --         "Next Diagnostic",
-    --       },
-    --       k = {
-    --         "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
-    --         "Prev Diagnostic",
-    --       },
-    --       l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-    --       q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
-    --       r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-    --       s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-    --       S = {
-    --         "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-    --         "Workspace Symbols",
-    --       },
-    --     },
-    which_key.setup(setup)
-    which_key.add({
-      { "<leader><leader>", "<cmd>Telescope find_files<cr>",          desc = "Find Files" },
-      { "<leader>e",        "<cmd>NvimTreeToggle<cr>",                desc = "Explorer" },
-      { "<leader>w",        "<cmd>w!<CR>",                            desc = "Save" },
-      { "<leader>c",        "<cmd>bdelete!<CR>",                      desc = "Close Buffer" },
-      { "<leader>b",        "<cmd>Telescope buffers<cr>",             desc = "Buffers" },
-      { "<leader>F",        "<cmd>Telescope live_grep theme=ivy<cr>", desc = "Find Text" },
-      {
-        "<leader>/",
-        "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>",
-        desc = "Toggle Comment",
-      },
-      {
-        "<leader>n",
-        "<cmd>lua require('illuminate').goto_next_reference({ wrap=true })<cr>",
-        desc = "Next occurence",
-      },
-      {
-        "<leader>p",
-        "<cmd>lua require('illuminate').goto_prev_reference({ wrap=true })<cr>",
-        desc = "Previous occurence",
-      },
-      { "<leader>j",  group = "Hop" },
-      { "<leader>jw", "<cmd>HopWord<cr>",                          desc = "To word" },
-      { "<leader>jk", "<cmd>HopWordCurrentLine<cr>",               desc = "Same line" },
-      { "<leader>jj", "<cmd>HopPattern<cr>",                       desc = "By pattern" },
+	"folke/which-key.nvim",
+	event = "VeryLazy",
+	dependencies = {
+		{ "echasnovski/mini.nvim", version = "*" },
+		{ "echasnovski/mini.icons", version = "*" },
+	},
+	config = function()
+		local wk = require("which-key")
+		local icons = require("utils.icons")
 
-      -- Finders
-      { "<leader>f",  group = "Find" },
-      { "<leader>ff", "<cmd>Telescope find_files<cr>",             desc = "Find files" },
-      { "<leader>fh", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find files (include hidden)" },
-      { "<leader>fk", "<cmd>Telescope keymaps<cr>",                desc = "Key maps" },
-      { "<leader>fc", "<cmd>Telescope colorscheme<cr>",            desc = "Colorscheme" },
-      { "<leader>ft", "<cmd>Telescope<cr>",                        desc = "Telescope" },
-      -- Searching
-      { "<leader>s",  group = "Search" },
-      { "<leader>sg", "<cmd>Telescope git_files<cr>",              desc = "Git Files" },
-      { "<leader>sB", "<cmd>Telescope buffers<cr>",                desc = "Buffers" },
-      { "<leader>sb", "<cmd>Telescope git_branches<cr>",           desc = "Checkout branch" },
-      { "<leader>sc", "<cmd>Telescope colorscheme<cr>",            desc = "Colorscheme" },
-      { "<leader>sh", "<cmd>Telescope help_tags<cr>",              desc = "Find Help" },
-      { "<leader>sM", "<cmd>Telescope man_pages<cr>",              desc = "Man Pages" },
-      { "<leader>sr", "<cmd>Telescope oldfiles<cr>",               desc = "Open Recent File" },
-      { "<leader>sR", "<cmd>Telescope registers<cr>",              desc = "Registers" },
-      { "<leader>sk", "<cmd>Telescope keymaps<cr>",                desc = "Keymaps" },
-      { "<leader>sC", "<cmd>Telescope commands<cr>",               desc = "Commands" },
-      { "<leader>si", "<cmd>Lspsaga incoming_calls<cr>",           desc = "Incoming Calls" },
-      -- Lazy Plugin Manager
-      { "<leader>z",  group = "Lazy" },
-      { "<leader>zz", "<cmd>Lazy home<cr>",                        desc = "Lazy" },
-      { "<leader>zc", "<cmd>Lazy check<cr>",                       desc = "Check" },
-      { "<leader>zi", "<cmd>Lazy install<cr>",                     desc = "Install" },
-      { "<leader>zs", "<cmd>Lazy sync<cr>",                        desc = "Sync" },
-      { "<leader>zu", "<cmd>Lazy update<cr>",                      desc = "Update" },
-    })
-    --   which_key.register(mappings, opts)
-  end,
+		local rules = {
+			{ plugin = "fzf-lua", cat = "filetype", name = "fzf" },
+			{ plugin = "neo-tree.nvim", cat = "filetype", name = "neo-tree" },
+			{ plugin = "octo.nvim", cat = "filetype", name = "git" },
+			{ plugin = "yanky.nvim", icon = "󰅇", color = "yellow" },
+			{ plugin = "zen-mode.nvim", icon = "󱅻 ", color = "cyan" },
+			{ plugin = "telescope.nvim", pattern = "telescope", icon = "", color = "blue" },
+			{ plugin = "trouble.nvim", cat = "filetype", name = "trouble" },
+			{ plugin = "todo-comments.nvim", cat = "file", name = "TODO" },
+			{ plugin = "nvim-spectre", icon = "󰛔 ", color = "blue" },
+			{ plugin = "noice.nvim", pattern = "noice", icon = "󰈸", color = "orange" },
+			{ plugin = "persistence.nvim", icon = " ", color = "azure" },
+			{ plugin = "neotest", cat = "filetype", name = "neotest-summary" },
+			{ plugin = "lazy.nvim", cat = "filetype", name = "lazy" },
+			{ plugin = "CopilotChat.nvim", icon = " ", color = "orange" },
+			{ pattern = "swap next", icon = icons.swapRight, color = "yellow" },
+			{ pattern = "swap previous", icon = icons.swapLeft, color = "yellow" },
+			{ pattern = "close buffer", icon = " ", color = "red" },
+			{ pattern = "%f[%a]git", cat = "filetype", name = "git" },
+			{ pattern = "terminal", icon = " ", color = "red" },
+			{ pattern = "find", icon = " ", color = "green" },
+			{ pattern = "search", icon = " ", color = "green" },
+			{ pattern = "test", cat = "filetype", name = "neotest-summary" },
+			{ pattern = "lazy", cat = "filetype", name = "lazy" },
+			{ pattern = "buffer", icon = "󰈔", color = "cyan" },
+			{ pattern = "file", icon = "󰈔", color = "cyan" },
+			{ pattern = "window", icon = " ", color = "blue" },
+			{ pattern = "diagnostic", icon = "󱖫 ", color = "green" },
+			{ pattern = "format", icon = " ", color = "cyan" },
+			{ pattern = "debug", icon = "󰃤 ", color = "red" },
+			{ pattern = "code", icon = " ", color = "orange" },
+			{ pattern = "notif", icon = "󰵅 ", color = "blue" },
+			{ pattern = "toggle", icon = " ", color = "yellow" },
+			{ pattern = "session", icon = " ", color = "azure" },
+			{ pattern = "exit", icon = "󰈆 ", color = "red" },
+			{ pattern = "quit", icon = "󰈆 ", color = "red" },
+			{ pattern = "tab", icon = "󰓩 ", color = "purple" },
+			{ pattern = "ai", icon = " ", color = "green" },
+			{ pattern = "ui", icon = "󰙵 ", color = "cyan" },
+		}
+
+		local setup = {
+			preset = "classic",
+			win = {
+				border = "rounded",
+				wo = {
+					winblend = 0,
+				},
+			},
+			layout = {
+				width = { min = 20, max = 50 },
+				spacing = 3,
+				align = "left",
+			},
+			--- Available sorters:
+			--- * local: buffer-local mappings first
+			--- * order: order of the items (Used by plugins like marks / registers)
+			--- * group: groups last
+			--- * alphanum: alpha-numerical first
+			--- * mod: special modifier keys last
+			--- * manual: the order the mappings were added
+			--- * case: lower-case first
+			sort = { "local", "order", "group", "alphanum" },
+			delay = function(ctx)
+				return ctx.plugin and 0 or 10
+			end,
+			icons = {
+				breadcrumb = "»",
+				separator = "➜",
+				group = "+",
+				ellipsis = "…",
+				mappings = true,
+				rules = rules,
+				colors = true,
+				keys = {
+					Up = "",
+					Down = "",
+					Left = "",
+					Right = "",
+					C = "󰘴",
+					M = "󰘵",
+					D = "󰘳",
+					S = "󰘶",
+					CR = "󰌑",
+					Esc = "󱊷",
+					ScrollWheelDown = "󱕐",
+					ScrollWheelUp = "󱕑",
+					NL = "󰌑",
+					BS = "󰁮",
+					Space = "󱁐",
+					Tab = "󰌒",
+					F1 = "󱊫",
+					F2 = "󱊬",
+					F3 = "󱊭",
+					F4 = "󱊮",
+					F5 = "󱊯",
+					F6 = "󱊰",
+					F7 = "󱊱",
+					F8 = "󱊲",
+					F9 = "󱊳",
+					F10 = "󱊴",
+					F11 = "󱊵",
+					F12 = "󱊶",
+				},
+			},
+			show_help = true,
+			show_keys = true,
+			disable = {
+				ft = {},
+				bt = {},
+			},
+			debug = false,
+		}
+		--
+		--     l = {
+		--       name = "LSP",
+		--       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+		--       d = {
+		--         "<cmd>Telescope diagnostics<cr>",
+		--         "Document Diagnostics",
+		--       },
+		--       w = {
+		--         "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+		--         "Workspace Diagnostics",
+		--       },
+		--       f = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format" },
+		--       i = { "<cmd>LspInfo<cr>", "Info" },
+		--       I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+		--       j = {
+		--         "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+		--         "Next Diagnostic",
+		--       },
+		--       k = {
+		--         "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+		--         "Prev Diagnostic",
+		--       },
+		--       l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+		--       q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
+		--       r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+		--       s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+		--       S = {
+		--         "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+		--         "Workspace Symbols",
+		--       },
+		--     },
+		local i = function(icon, color)
+			return {
+				color = color or "blue",
+				icon = icon,
+				cat = "filetype",
+				hl = "WhichKeyIcon",
+			}
+		end
+
+		local k = function(key, command, desc, icon)
+			if icon ~= nil then
+				return {
+					"<leader>" .. key,
+					command,
+					desc = desc,
+					icon = icon,
+				}
+			end
+
+			return {
+				"<leader>" .. key,
+				command,
+				desc = desc,
+			}
+		end
+
+		local illuminate = require("illuminate")
+		local function next_reference()
+			illuminate.goto_next_reference({ wrap = true })
+		end
+		local function prev_reference()
+			illuminate.goto_prev_reference({ wrap = true })
+		end
+
+		wk.setup(setup)
+		wk.add({
+			k("<leader>", "<cmd>Telescope find_files<cr>", "Find Files", i("󰱼", "purple")),
+			k("/", "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Toggle Comment"),
+			-- letters
+			k("b", "<cmd>Telescope buffers<cr>", "Buffers"),
+			k("c", "<cmd>bdelete<CR>", "Close Buffer"),
+			k("e", "<cmd>NvimTreeToggle<cr>", "Explorer", i(icons.explorer, "yellow")),
+			k("F", "<cmd>Telescope live_grep theme=ivy<cr>", "Find (live grep)", i("󱪦", "purple")),
+			k("k", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy and go", i("󱎸", "green")),
+			k("n", next_reference, "Next occurence", i(icons.swapRight)),
+			k("p", prev_reference, "Previous occurence", i(icons.swapLeft)),
+			k("w", "<cmd>w!<CR>", "Save", i(icons.save, "orange")),
+
+			-- Hiding not wanted stuff
+			{ "<leader>-", hidden = true },
+			{ "<leader>fmt", hidden = true },
+			{ "<leader>r", hidden = true },
+			--Hop to
+			{ "<leader>j", group = "Hop", icon = i("󰞁") },
+			k("jw", "<cmd>HopWord<cr>", "To word"),
+			k("jk", "<cmd>HopWordCurrentLine<cr>", "Same line"),
+			k("jj", "<cmd>HopPattern<cr>", "By pattern"),
+
+			-- Finders
+			{ "<leader>f", group = "Finders" },
+			k("fc", "<cmd>Telescope colorscheme enable_preview=true<cr>", "Colorscheme"),
+			k("ff", "<cmd>Telescope find_files<cr>", "Find files"),
+			k("fg", "<cmd>Telescope git_files<cr>", "Git Files"),
+			k("fh", "<cmd>Telescope find_files hidden=true<cr>", "Find files (include hidden)"),
+			k("fk", "<cmd>Telescope keymaps<cr>", "Key maps"),
+			k("ft", "<cmd>Telescope<cr>", "Telescope"),
+			k("fr", "<cmd>Telescope oldfiles<cr>", "Open Recent File"),
+			k("fs", "<cmd>Telescope commands<cr>", "Commands"),
+
+			-- Git
+			{ "<leader>g", group = "Git" },
+			k("gb", "<cmd>Telescope git_branches<cr>", "Checkout branch"),
+			k("gg", "<cmd>NeoGit<cr>", "NeoGit"),
+			k("gj", "<cmd>Gitsigns next_hunk<cr>", "Next Hunk"),
+			k("gk", "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk"),
+			k("gl", "<cmd>Gitsigns blame_line<cr>", "Blame Line"),
+			k("gR", "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer"),
+			k("gd", "<cmd>Gitsigns diffthis HEAD<cr>", "Diff"),
+			k("gs", "<cmd>Telescope git_status<cr>", "Open git status"),
+			k("gb", "<cmd>Telescope git_branches<cr>", "Switch to branch"),
+			k("gc", "<cmd>Telescope git_commits<cr>", "Checkout commit"),
+
+			-- Lazy Plugin Manager
+			{ "<leader>z", group = "Lazy" },
+			k("zz", "<cmd>Lazy home<cr>", "Lazy"),
+			k("zc", "<cmd>Lazy check<cr>", "Check"),
+			k("zi", "<cmd>Lazy install<cr>", "Install"),
+			k("zs", "<cmd>Lazy sync<cr>", "Sync"),
+			k("zu", "<cmd>Lazy update<cr>", "Update"),
+		})
+	end,
 }

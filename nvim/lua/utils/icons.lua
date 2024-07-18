@@ -1,5 +1,10 @@
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 return {
+  save = "󰽃",
+  explorer = "󱏒",
+  swapRight = "󰔰",
+  swapLeft = "󰶢",
+  outline = "󰉺",
   kind = {
     Text = "󰊄",
     Method = "",

@@ -6,10 +6,8 @@ return {
     local filetypes = require("utils.filetypes")
 
     vim.g.Illuminate_ftblacklist = filetypes.non_editable_filetypes
-    vim.api.nvim_set_keymap('n', '<a-n>', '<cmd>lua require"illuminate".goto_next_reference{wrap=true}<cr>', {noremap=true})
-    vim.api.nvim_set_keymap('n', '<a-p>', '<cmd>lua require"illuminate".goto_prev_reference{reverse=true,wrap=true}<cr>', {noremap=true})
 
-    illuminate.configure {
+    illuminate.configure({
       providers = {
         "lsp",
         "treesitter",
@@ -34,6 +32,6 @@ return {
       providers_regex_syntax_allowlist = {},
       -- under_cursor: whether or not to illuminate under the cursor
       under_cursor = true,
-    }
-  end
+    })
+  end,
 }
