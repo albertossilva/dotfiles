@@ -55,10 +55,6 @@ M.on_attach = function(client, bufnr)
   k("<Leader>o", "<Cmd>Lspsaga outline<CR>", "Outline", bufnr)
   set_keymap({
     ["<Leader>-k"] = vim.lsp.buf.signature_help,
-    -- ["<Leader>D"] = vim.lsp.buf.type_definition,
-    ["<Leader>fmt"] = function()
-      vim.lsp.buf.format({ async = true })
-    end,
     ["<Leader>rn"] = "<Cmd>Lspsaga rename<CR>",
     ["K"] = "<Cmd>Lspsaga hover_doc<CR>",
     ["gD"] = "<Cmd>Lspsaga finder def+ref+imp<CR>",

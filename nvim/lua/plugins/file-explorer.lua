@@ -63,7 +63,6 @@ return {
     dependencies = { "kyazdani42/nvim-web-devicons" },
     config = function()
       vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-      vim.keymap.set("n", "<leader>f", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
       require("oil").setup({
         default_file_explorer = true,
