@@ -1,12 +1,12 @@
 font:
   normal:
-    family: Hack Nerd Font Mono
+    family: MesloLGL Nerd Font 
     style: Regular
   bold:
-    family: Hack Nerd Font Mono
+    family: MesloLGL Nerd Font 
     style: Bold 
   italic:
-    family: Hack Nerd Font Mono
+    family: MesloLGL Nerd Font
     style: Italic
   size: 14
   use_thin_strokes: true

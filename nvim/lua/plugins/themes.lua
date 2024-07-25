@@ -9,4 +9,5 @@ return {
       vim.cmd.colorscheme("gruvbox")
     end,
   },
+  "xiyaowong/transparent.nvim",
 }
