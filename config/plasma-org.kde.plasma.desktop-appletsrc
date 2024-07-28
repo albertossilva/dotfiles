@@ -5,6 +5,7 @@ RightButton;NoModifier=org.kde.contextmenu
 RightButton;NoModifier=org.kde.contextmenu
 
 [Containments][1]
+ItemGeometries-2560x1440=
 ItemGeometries-3840x2160=
 ItemGeometriesHorizontal=
 activityId=0b11e634-0666-433c-9c18-9b6a2eb6f2e0
@@ -70,6 +71,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][2][Applets][7][Configuration]
+PreloadWeight=55
 SystrayContainmentId=8
 
 [Containments][2][General]
@@ -82,6 +84,8 @@ immutability=1
 lastScreen=0
 location=4
 plugin=org.kde.plasma.private.systemtray
+popupHeight=432
+popupWidth=432
 wallpaperplugin=org.kde.image
 
 [Containments][8][Applets][10]
@@ -120,8 +124,12 @@ plugin=org.kde.plasma.vault
 immutability=1
 plugin=org.kde.plasma.volume
 
+[Containments][8][Applets][18][Configuration]
+PreloadWeight=55
+
 [Containments][8][Applets][18][Configuration][General]
 migrated=true
+showVirtualDevices=true
 
 [Containments][8][Applets][19]
 immutability=1
@@ -143,6 +151,13 @@ plugin=org.kde.plasma.bluetooth
 immutability=1
 plugin=org.kde.plasma.networkmanagement
 
+[Containments][8][Applets][26]
+immutability=1
+plugin=org.kde.plasma.mediacontroller
+
+[Containments][8][Applets][26][Configuration]
+PreloadWeight=42
+
 [Containments][8][Applets][9]
 immutability=1
 plugin=org.kde.plasma.manage-inputmethod
@@ -153,4 +168,4 @@ knownItems=org.kde.plasma.brightness,org.kde.plasma.battery,org.kde.plasma.manag
 
 [ScreenMapping]
 itemsOnDisabledScreens=
-screenMapping=desktop:/EmuDeck.desktop,0,0b11e634-0666-433c-9c18-9b6a2eb6f2e0
+screenMapping=desktop:/EmuDeck.desktop,0,0b11e634-0666-433c-9c18-9b6a2eb6f2e0,desktop:/Old Firefox Data,0,0b11e634-0666-433c-9c18-9b6a2eb6f2e0
