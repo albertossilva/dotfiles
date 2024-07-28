@@ -6,3 +6,9 @@ forgit
 
 tj_nvim
 nvim_working
+config/zed/
+config/thefuck
+config/coc
+config/configstore
+config/karabiner/automatic_backups
+config/github-copilot
