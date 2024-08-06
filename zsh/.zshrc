@@ -25,7 +25,6 @@ source $DOTFILES/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DOTFILES/zsh/.zsh_aliases
 source $DOTFILES/zsh/.zsh_abbreviations
 
-
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=black,fg=yellow,bold'
@@ -62,6 +61,7 @@ setopt EXTENDED_GLOB     # Use extended globbing syntax.
 # HISTORY
 export HISTSIZE=10000 # Maximum events for internal history
 export SAVEHIST=10000 # Maximum events in history file
+export HISTFILE=~/.zsh_history
 
 setopt EXTENDED_HISTORY       # Write the history file in the ':start:elapsed;command' format.
 setopt SHARE_HISTORY          # Share history between all sessions.
@@ -117,18 +117,6 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
-bindkey -s '^o' 'lfcd\n'
-
 # VI MODE
 bindkey -v
 # Edit line in vim with ctrl-e:
@@ -137,15 +125,15 @@ bindkey '^e' edit-command-line
 
 eval $(thefuck --alias)
 
-export MCFLY_KEY_SCHEME=vim
-export MCFLY_FUZZY=2
-export MCFLY_RESULTS=20
-export MCFLY_INTERFACE_VIEW=BOTTOM
-export MCFLY_PROMPT="❯"
-
 export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
-# eval "$(mcfly init zsh)"
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(starship init zsh)"
+
+# bun completions
+[ -s "/home/alberto/.bun/_bun" ] && source "/home/alberto/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -12,3 +12,12 @@ truncation_length = 10
 truncation_symbol = "…/"
 truncate_to_repo = false
 
+[git_commit]
+tag_symbol = " tag "
+
+[git_status]
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"

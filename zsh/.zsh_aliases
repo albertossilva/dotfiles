@@ -1,7 +1,5 @@
-alias ctags="`brew --prefix`/bin/ctags"
 alias shit="fuck"
 alias docker="nerdctl"
-
 
 # PS
 alias psa="ps aux"

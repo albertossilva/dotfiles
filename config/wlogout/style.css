@@ -1,0 +1,72 @@
+@import "../../.cache/wal/colors-wlogout.css";
+
+* {
+  font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial,
+    sans-serif;
+  background-image: none;
+  transition: 20ms;
+  box-shadow: none;
+}
+
+window {
+  background: url("../../.cache/blurred_wallpaper.png");
+  background-size: cover;
+}
+
+button {
+  color: #ffffff;
+  font-size: 32px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 25%;
+
+  border-style: solid;
+  background-color: rgba(12, 12, 12, 0.3);
+  border: 3px solid #ffffff;
+
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+button:active,
+button:hover {
+  color: @color11;
+  background-color: rgba(12, 12, 12, 0.5);
+  border: 3px solid @color11;
+}
+
+#lock,
+#logout,
+#suspend,
+#hibernate,
+#shutdown,
+#reboot {
+  margin: 20px;
+  border-radius: 20px;
+}
+
+#lock {
+  background-image: image(url("./icons/lock.png"));
+}
+
+#logout {
+  background-image: image(url("./icons/logout.png"));
+}
+
+#suspend {
+  background-image: image(url("./icons/suspend.png"));
+}
+
+#hibernate {
+  background-image: image(url("./icons/hibernate.png"));
+}
+
+#shutdown {
+  background-image: image(url("./icons/shutdown.png"));
+}
+
+#reboot {
+  background-image: image(url("./icons/reboot.png"));
+}

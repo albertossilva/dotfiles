@@ -1,0 +1,22 @@
+[
+    {
+        "key": "decoration:rounding",
+        "value": 4
+    },
+    {
+        "key": "decoration:active_opacity",
+        "value": 1.0
+    },
+    {
+        "key": "general:gaps_in",
+        "value": 5
+    },
+    {
+        "key": "general:gaps_out",
+        "value": 10
+    },
+    {
+        "key": "decoration:blur:passes",
+        "value": 1
+    }
+]

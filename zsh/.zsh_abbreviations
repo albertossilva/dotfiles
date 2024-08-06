@@ -20,6 +20,8 @@ abbreviations=(
     "testuw" "npm run test -- --watch"
     "testuu" "npm run test:unit --"
     "testuuw" "npm run test:unit -- --watch"
+    "snapu" "npm run test -- --update-snapshots"
+    "snapuu" "npm run test:unit -- --update-snapshots"
 )
 
 magic-abbrev-expand() {
