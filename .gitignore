@@ -61,3 +61,10 @@ config/teams-for-linux
 config/Postman
 config/Mousepad
 config/trizen
+config/unity3d
+config/libfm
+config/discoverrc
+config/pcmanfm
+config/pacseek
+config/gtk-3.0
+config/qalculate
