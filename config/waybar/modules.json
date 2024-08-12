@@ -116,25 +116,11 @@
     "tooltip-format": "ML4W Dotfiles Settings"
   },
 
-  // Keybindings
-  "custom/keybindings": {
-    "format": "",
-    "on-click": "~/.config/hypr/scripts/keybindings.sh",
-    "tooltip": false
-  },
-
   // ChatGPT Launcher
   "custom/chatgpt": {
     "format": " ",
     "on-click": "~/.config/.settings/ai.sh",
     "tooltip-format": "AI Support"
-  },
-
-  // Calculator
-  "custom/calculator": {
-    "format": "",
-    "on-click": "qalculate-gtk",
-    "tooltip-format": "Open calculator"
   },
 
   // Windows VM
@@ -146,20 +132,8 @@
 
   // Rofi Application Launcher
   "custom/appmenu": {
-    // START APPS LABEL
-    "format": "Apps",
-    // END APPS LABEL
-    "on-click": "sleep 0.2;rofi -show drun -replace",
-    "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
-    "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
-  },
-
-  // Rofi Application Launcher
-  "custom/appmenuicon": {
     "format": "",
-    "on-click": "rofi -show drun -replace",
-    "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
-    "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
+    "on-click": "sleep 0.2;rofi -show drun -replace"
   },
 
   // Power Menu

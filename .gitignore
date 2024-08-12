@@ -68,3 +68,4 @@ config/pcmanfm
 config/pacseek
 config/gtk-3.0
 config/qalculate
+config/chromium
