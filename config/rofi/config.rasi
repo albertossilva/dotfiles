@@ -8,7 +8,7 @@ configuration {
     display-run:                "RUN";
     display-filebrowser:        "FILES";
     display-window:             "WINDOW";
-	drun-display-format:        "{name}";
+    drun-display-format:        "{name}";
     hover-select:               false;
     scroll-method:              1;
     me-select-entry:            "";
@@ -46,7 +46,7 @@ window {
     anchor:                       center;
     fullscreen:                   false;
     enabled:                      true;
-    border-radius:                10px;
+    border-radius:                4px;
     background-color:             transparent;
 }
 
@@ -88,7 +88,7 @@ inputbar {
     text-color:                   @foreground;
     spacing:                      10px;
     padding:                      15px;
-    border-radius:                10px;
+    border-radius:                4px;
     border-color:                 @foreground;
     background-color:             @background;
     children:                     [ "textbox-prompt-colon", "entry" ];
@@ -122,7 +122,7 @@ mode-switcher{
 
 button {
     padding:                      10px;
-    border-radius:                10px;
+    border-radius:                4px;
     background-color:             @background;
     text-color:                   inherit;
     cursor:                       pointer;
@@ -160,7 +160,7 @@ element {
     margin:                       5px;
     cursor:                       pointer;
     background-color:             @background;
-    border-radius:                10px;
+    border-radius:                4px;
     border:                       @border-width;
 }
 
