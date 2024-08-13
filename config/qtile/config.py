@@ -62,7 +62,7 @@ platform = int(os.popen("cat /sys/class/dmi/id/chassis_type").read())
 # Set default apps
 # --------------------------------------------------------
 
-terminal = "alacritty"        
+terminal = "kitty"
 
 # --------------------------------------------------------
 # Keybindings
@@ -145,7 +145,7 @@ dgroups_key_binder = simple_key_binder(mod)
 groups.append(ScratchPad("6", [
     DropDown("chatgpt", "chromium --app=https://chat.openai.com", x=0.3, y=0.1, width=0.40, height=0.4, on_focus_lost_hide=False ),
     DropDown("mousepad", "mousepad", x=0.3, y=0.1, width=0.40, height=0.4, on_focus_lost_hide=False ),
-    DropDown("terminal", "alacritty", x=0.3, y=0.1, width=0.40, height=0.4, on_focus_lost_hide=False ),
+    DropDown("terminal", "kitty", x=0.3, y=0.1, width=0.40, height=0.4, on_focus_lost_hide=False ),
     DropDown("scrcpy", "scrcpy -d", x=0.8, y=0.05, width=0.15, height=0.6, on_focus_lost_hide=False )
 ]))
 
@@ -339,7 +339,7 @@ widget_list = [
         background=Color2+".4",
         padding=10,
         format='{essid} {percent:2.0%}',
-        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e nmtui")},
+        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty -e nmtui")},
     ),
     widget.Clock(
         **decor_right,
