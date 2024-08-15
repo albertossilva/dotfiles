@@ -70,3 +70,4 @@ config/gtk-3.0
 config/qalculate
 config/chromium
 config/qcalculate
+config/pulse
