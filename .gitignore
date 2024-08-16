@@ -78,3 +78,4 @@ config/device_automounter_kcmrc
 config/kcminputrc
 config/krdpserverrc
 config/ksmserverrc
+config/Pinta

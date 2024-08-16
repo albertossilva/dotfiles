@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=ML4W Welcome App
-Exec=/home/alberto/.config/apps/ML4W_Welcome-x86_64.AppImage
-Icon=/home/alberto/.config/apps/ml4w-icon.png
-Terminal=false
-Categories=Utility

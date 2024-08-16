@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=ML4W Dotfiles Settings App
-Exec=/home/alberto/.config/apps/ML4W_Dotfiles_Settings-x86_64.AppImage
-Icon=/home/alberto/.config/apps/ml4w-dotfiles-settings.png
-Terminal=false
-Categories=Utility
