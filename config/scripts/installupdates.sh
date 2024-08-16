@@ -58,7 +58,7 @@ if [[ $(_isInstalledYay "timeshift") == "0" ]] ;then
     echo
 fi
 
-trizen -Syu --noconfirm --noedit --noinfo
+trizen -Syu --noedit --noinfo
 
 notify-send "Update complete"
 echo 

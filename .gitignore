@@ -71,3 +71,10 @@ config/qalculate
 config/chromium
 config/qcalculate
 config/pulse
+config/discord
+config/session
+config/bluedevilglobalrc
+config/device_automounter_kcmrc
+config/kcminputrc
+config/krdpserverrc
+config/ksmserverrc
