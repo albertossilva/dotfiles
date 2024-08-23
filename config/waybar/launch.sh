@@ -5,18 +5,4 @@ killall waybar
 pkill waybar
 sleep 0.2
 
-# ----------------------------------------------------- 
-# Default theme: /THEMEFOLDER;/VARIATION
-# ----------------------------------------------------- 
-themestyle="/ml4w-blur;/ml4w-blur/white"
-
-IFS=';' read -ra arrThemes <<< "$themestyle"
-echo ":: Theme: ${arrThemes[0]}"
-
-# ----------------------------------------------------- 
-# Loading the configuration
-# ----------------------------------------------------- 
-config_file="config"
-style_file="style.css"
-
-waybar -c ~/.config/waybar/themes${arrThemes[0]}/$config_file -s ~/.config/waybar/themes${arrThemes[1]}/$style_file &
+waybar

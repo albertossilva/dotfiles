@@ -30,7 +30,7 @@
         "hyprland/workspaces"
     ],
 
-    // Modules Right    
+    // Modules Right
     "modules-right": [
         "custom/updates",
         "pulseaudio",
