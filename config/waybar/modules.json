@@ -4,11 +4,15 @@
     "on-click": "activate",
     "active-only": false,
     "all-outputs": true,
-    "format": "{}",
+    "format": "{icon}  {name}",
     "format-icons": {
-      "urgent": "",
-      "active": "",
-      "default": ""
+      "1": " ",
+      "2": "󰈹",
+      "3": "󰊻",
+      "4": "󰢋",
+      "5": "",
+      "10": "",
+      "default": ""
     },
     "persistent-workspaces": {
       "*": 1
@@ -217,10 +221,10 @@
 
   // Bluetooth
   "bluetooth": {
-    "format": " {status}",
+    "format": " {num_connections}",
     "format-disabled": "",
     "format-off": "",
-    "interval": 30,
+    "interval": 60,
     "on-click": "blueman-manager",
     "format-no-controller": ""
   },

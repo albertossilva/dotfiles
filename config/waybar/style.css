@@ -30,9 +30,7 @@
 }
 
 window#waybar {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-bottom: 0px solid #ffffff;
-  /* color: #FFFFFF; */
+  background-color: rgba(0, 0, 0, 0.4);
   transition-property: background-color;
   transition-duration: 0.5s;
 }
@@ -42,43 +40,29 @@ window#waybar {
  * ----------------------------------------------------- */
 
 #workspaces {
-  background: @workspacesbackground1;
-  margin: 5px 1px 6px 1px;
-  padding: 0px 1px;
-  border-radius: 15px;
-  border: 0px;
+  background: transparent;
+  padding: 0px 0px 0px 10px;
   font-weight: bold;
-  font-style: normal;
-  opacity: 0.8;
-  font-size: 16px;
-  color: @textcolor1;
+  font-family: "MelsoLGL Nerd Font";
 }
 
 #workspaces button {
-  padding: 0px 5px;
-  margin: 4px 3px;
-  border-radius: 15px;
-  border: 0px;
-  color: @textcolor1;
-  background-color: @workspacesbackground2;
+  font-size: 16px;
+  background-color: transparent;
+  border-top: solid 2px transparent;
   transition: all 0.3s ease-in-out;
-  opacity: 0.4;
-  min-width: 30px;
+  min-width: 40px;
 }
 
 #workspaces button.active {
-  color: @textcolor1;
-  background: @workspacesbackground2;
-  border-radius: 15px;
-  transition: all 0.3s ease-in-out;
-  opacity: 1;
+  border-top: solid 2px @workspacesbackground2;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: @textcolor0;
 }
 
 #workspaces button:hover {
-  color: @textcolor1;
-  background: @workspacesbackground2;
-  border-radius: 15px;
-  opacity: 0.7;
+  border-top: solid 2px @workspacesbackground2;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* -----------------------------------------------------
@@ -498,14 +482,10 @@ window#waybar.empty #window {
   -gtk-icon-effect: highlight;
 }
 
-window#waybar {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-#custom-ml4w-welcome {
-  background-image: url("../../assets/ml4w-icon-white.svg");
-}
-
-#custom-chatgpt {
-  background-image: url("../../assets/openai-white.svg");
-}
+/* #custom-ml4w-welcome { */
+/*   background-image: url("../../assets/ml4w-icon-white.svg"); */
+/* } */
+/**/
+/* #custom-chatgpt { */
+/*   background-image: url("../../assets/openai-white.svg"); */
+/* } */
