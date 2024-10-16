@@ -30,7 +30,7 @@ return {
 
       local servers = {
         "lua_ls",
-        "tsserver",
+        "ts_ls",
       }
 
       mason_lspconfig.setup({ ensure_installed = servers })
@@ -61,18 +61,6 @@ return {
 
       -- then, setup null_ls
       require("lsp.null-ls")
-
-      -- require("typescript-tools").setup({
-      --   settings = {
-      --     jsx_close_tag = {
-      --       enable = false,
-      --       filetypes = { "javascriptreact", "typescriptreact" },
-      --     },
-      --     tsserver_plugins = {
-      --       "@styled/typescript-styled-plugin",
-      --     },
-      --   },
-      -- })
     end,
   },
   {
