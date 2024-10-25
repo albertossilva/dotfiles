@@ -170,6 +170,7 @@ return {
       k("k", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy and go", i("󱎸", "green")),
       k("n", next_reference, "Next occurence", i(icons.swapRight)),
       k("p", prev_reference, "Previous occurence", i(icons.swapLeft)),
+      k("s", "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols", i("")),
       k("w", "<cmd>w!<CR>", "Save", i(icons.save, "orange")),
 
       -- Hiding not wanted stuff
@@ -213,8 +214,7 @@ return {
       k("lk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Prev Diagnostic"),
       k("ll", "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action"),
       k("lr", "<cmd>Lspsaga rename<cr>", "Rename", i("󰑕", "cyan")),
-      k("ls", "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols", i("")),
-      k("lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols", i("")),
+      k("ls", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols", i("")),
 
       -- Lazy Plugin Manager
       { "<leader>z", group = "Lazy" },
