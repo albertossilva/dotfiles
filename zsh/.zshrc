@@ -33,15 +33,6 @@ source $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 source ~/.dotfiles/forgit
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-[ -f "/Users/silvaalb/.ghcup/env" ] && source "/Users/silvaalb/.ghcup/env" # ghcup-env
-
-
-# LOCAL
-test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"
-
 timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
@@ -125,6 +116,12 @@ bindkey '^e' edit-command-line
 
 eval $(thefuck --alias)
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+
+# LOCAL
 export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -132,8 +129,18 @@ export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
 eval "$(starship init zsh)"
 
 # bun completions
-[ -s "/home/alberto/.bun/_bun" ] && source "/home/alberto/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"
