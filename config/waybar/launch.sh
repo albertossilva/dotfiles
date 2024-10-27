@@ -1,8 +1,7 @@
-# ----------------------------------------------------- 
-# Quit all running waybar instances
-# ----------------------------------------------------- 
-killall waybar
-pkill waybar
-sleep 0.2
+if pgrep -x "waybar" > /dev/null; then
+  killall waybar
+  pkill waybar
+else
+  waybar
+fi
 
-waybar
