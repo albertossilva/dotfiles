@@ -92,3 +92,4 @@ config/Cemu
 config/guvcview2
 config/go/telemetry/*
 config/systemmonitorrc
+config/Ryujinx
