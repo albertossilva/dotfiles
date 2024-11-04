@@ -93,3 +93,6 @@ config/guvcview2
 config/go/telemetry/*
 config/systemmonitorrc
 config/Ryujinx
+config/archlinux-tweak-tool
+config/nextjs-nodejs
+config/turborepo
