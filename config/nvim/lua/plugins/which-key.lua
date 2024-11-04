@@ -2,7 +2,7 @@ return {
   "folke/which-key.nvim",
   event = "VeryLazy",
   dependencies = {
-    { "echasnovski/mini.nvim",  version = "*" },
+    { "echasnovski/mini.nvim", version = "*" },
     { "echasnovski/mini.icons", version = "*" },
   },
   config = function()
@@ -208,7 +208,13 @@ return {
       -- LSP
       { "<leader>l", group = "LSP" },
       k("ld", "<cmd>Telescope diagnostics<cr>", "Document Diagnostics"),
-      k("lf", "<cmd>lua vim.lsp.buf.format({async=tr})<cr>", "Format"),
+      k("lf", function()
+        require("conform").format({
+          lsp_fallback = true,
+          async = false,
+          timeout_ms = 1000,
+        })
+      end, "Format"),
       k("li", "<cmd>LspInfo<cr>", "Info", i("", "yellow")),
       k("lj", "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next Diagnostic"),
       k("lk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Prev Diagnostic"),

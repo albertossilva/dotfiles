@@ -4,19 +4,17 @@ return {
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
-      "jose-elias-alvarez/null-ls.nvim",
-      "jayp0521/mason-null-ls.nvim",
       "pmizio/typescript-tools.nvim",
     },
     config = function()
       -- Check if all dependencies are installed, otherwise exits early
-      local dependencies = { "mason", "mason-lspconfig", "lspconfig", "mason-null-ls" }
+      local dependencies = { "mason", "mason-lspconfig", "lspconfig" }
       local status_ok, deps = require("utils.prequire")(dependencies, "Failed to start LSP")
       if not status_ok then
         return
       end
 
-      local mason, mason_lspconfig, lspconfig, mason_null_ls = unpack(deps)
+      local mason, mason_lspconfig, lspconfig = unpack(deps)
 
       mason.setup({
         ui = {
@@ -49,18 +47,6 @@ return {
 
         lspconfig[server].setup(settings)
       end
-
-      -- plug mason_null_ls to auto install linters
-      mason_null_ls.setup({
-        ensure_installed = {
-          "prettierd",
-          "stylua",
-          "eslint_d",
-        },
-      })
-
-      -- then, setup null_ls
-      require("lsp.null-ls")
     end,
   },
   {
