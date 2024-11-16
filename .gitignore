@@ -96,3 +96,10 @@ config/Ryujinx
 config/archlinux-tweak-tool
 config/nextjs-nodejs
 config/turborepo
+config/QtProject.conf
+config/Unknown Organization
+config/nitrogen
+config/transmission
+config/vlc
+config/zoom.conf
+config/zoomus.conf

@@ -1,5 +1,5 @@
 alias shit="fuck"
-alias docker="nerdctl"
+# alias docker="nerdctl"
 
 # PS
 alias psa="ps aux"

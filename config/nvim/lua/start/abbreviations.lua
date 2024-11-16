@@ -1,4 +1,4 @@
-vim.api.nvim_command("abbr interactor iteractor")
+vim.api.nvim_command("abbr iteractor interactor")
 
 vim.api.nvim_command("abbr funciton function")
 vim.api.nvim_command("abbr funtcion function")

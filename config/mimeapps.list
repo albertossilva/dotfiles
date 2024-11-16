@@ -11,3 +11,6 @@ application/zip=org.gnome.FileRoller.desktop
 [Added Associations]
 x-scheme-handler/tonsite=org.telegram.desktop.desktop;
 application/zip=org.gnome.FileRoller.desktop;
+video/x-matroska=vlc.desktop;
+image/png=gimp.desktop;
+image/jpeg=gimp.desktop;
