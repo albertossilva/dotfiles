@@ -25,7 +25,7 @@ blurred_wallpaper="$HOME/.cache/blurred_wallpaper.png"
 square_wallpaper="$HOME/.cache/square_wallpaper.png"
 rasi_file="$HOME/.cache/current_wallpaper.rasi"
 blur_file="$HOME/.config/.settings/blur.sh"
-default_wallpaper="~/wallpaper/default.jpg"
+default_wallpaper="~/wallpaper/evening-landscape.jpg"
 blur="50x30"
 blur=$(cat $blur_file)
 

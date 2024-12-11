@@ -31,8 +31,6 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=black,fg=yellow,bold'
 
 source $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
-source ~/.dotfiles/forgit
-
 timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
