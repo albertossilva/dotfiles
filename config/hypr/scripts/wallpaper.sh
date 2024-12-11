@@ -110,7 +110,7 @@ hyprpaper & > /dev/null 2>&1
 # ----------------------------------------------------- 
 # Reload Waybar
 # -----------------------------------------------------
-~/.config/waybar/launch.sh
+# ~/.config/waybar/launch.sh
 
 # ----------------------------------------------------- 
 # Created blurred wallpaper

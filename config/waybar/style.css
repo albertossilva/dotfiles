@@ -1,7 +1,7 @@
 /* -----------------------------------------------------
  * Import Pywal colors 
  * ----------------------------------------------------- */
-@import "../../.cache/wal/colors-waybar.css";
+ @import "../../.cache/wal/colors-waybar.css";
 
 @define-color backgroundlight #FFFFFF;
 @define-color backgrounddark #FFFFFF;
@@ -12,11 +12,6 @@
 @define-color textcolor2 #000000;
 @define-color textcolor3 #000000;
 @define-color iconcolor #FFFFFF;
-
-/* -----------------------------------------------------
- * Import Pywal colors 
- * ----------------------------------------------------- */
-/* @import 'style-light.css'; */
 
 /* -----------------------------------------------------
  * General 
@@ -32,7 +27,7 @@
 window#waybar {
   background-color: rgba(0, 0, 0, 0.4);
   transition-property: background-color;
-  transition-duration: 0.5s;
+  transition-duration: 0.1s;
 }
 
 /* -----------------------------------------------------
@@ -63,6 +58,10 @@ window#waybar {
 #workspaces button:hover {
   border-top: solid 2px @workspacesbackground2;
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+#workspaces button.active:hover {
+  color: @textcolor1;
 }
 
 /* -----------------------------------------------------
