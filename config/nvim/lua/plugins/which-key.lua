@@ -4,6 +4,7 @@ return {
   dependencies = {
     { "echasnovski/mini.nvim", version = "*" },
     { "echasnovski/mini.icons", version = "*" },
+    { "nvim-pack/nvim-spectre" },
   },
   config = function()
     local wk = require("which-key")
@@ -167,6 +168,7 @@ return {
       k("c", "<cmd>bdelete<CR>", "Close Buffer"),
       k("e", "<cmd>NvimTreeToggle<cr>", "Explorer", i(icons.explorer, "yellow")),
       k("F", "<cmd>Telescope live_grep theme=ivy<cr>", "Find (live grep)", i("󱪦", "purple")),
+      k("S", '<cmd>lua require("spectre").toggle()<CR>', "Search/replace", i("󰛔", "orange")),
       k("k", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy and go", i("󱎸", "green")),
       k("n", next_reference, "Next occurence", i(icons.swapRight)),
       k("p", prev_reference, "Previous occurence", i(icons.swapLeft)),
