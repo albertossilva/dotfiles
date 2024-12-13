@@ -8,12 +8,7 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lua",
 
-    -- nvim-cmp requires one snippet engine
-    { "L3MON4D3/LuaSnip", version = "v1.*" },
-    "saadparwaiz1/cmp_luasnip",
-
-    --  Nice package, but do I want it?
-    -- "rafamadriz/friendly-snippets"
+    { "L3MON4D3/LuaSnip", version = "v2.*", dependencies = { "rafamadriz/friendly-snippets" } },
   },
   config = function()
     -- ensure cmp and luasnip exists
@@ -68,10 +63,10 @@ return {
         select = false,
       },
       sources = {
-        { name = "nvim_lua" },
-        { name = "nvim_lsp" },
         { name = "luasnip" },
+        { name = "nvim_lsp" },
         { name = "buffer" },
+        { name = "nvim_lua" },
         { name = "path" },
       },
       experimental = {
@@ -95,4 +90,3 @@ return {
     })
   end,
 }
-
