@@ -31,6 +31,12 @@
     "separate-outputs": true
   },
 
+  "custom/chatgpt": {
+    "format": " ",
+    "on-click": "sleep 0.1 && ~/.dotfiles/config/.settings/ai.sh",
+    "tooltip-format": "Open chatGPT"
+  },
+
   // Cliphist
   "custom/cliphist": {
     "format": "",
@@ -50,25 +56,11 @@
     "on-click": "kitty --class dotfiles-floating -e ~/.config/scripts/installupdates.sh"
   },
 
-  // Rofi Application Launcher
-  "custom/appmenu": {
-    "format": "",
-    "on-click": "sleep 0.2;rofi -show drun -replace"
-  },
-
   // Power Menu
   "custom/exit": {
     "format": "",
     "on-click": "wlogout",
     "tooltip-format": "Power Menu"
-  },
-
-  // Hyprshade
-  "custom/hyprshade": {
-    "format": "",
-    "tooltip-format": "Toggle Screen Shader",
-    "on-click": "sleep 0.5; ~/.config/hypr/scripts/hyprshade.sh",
-    "on-click-right": "sleep 0.5; ~/.config/hypr/scripts/hyprshade.sh rofi"
   },
 
   // Hypridle inhibitor
@@ -81,17 +73,6 @@
     "exec": "~/.config/hypr/scripts/hypridle.sh status",
     "on-click": "~/.config/hypr/scripts/hypridle.sh toggle",
     "on-click-right": "hyprlock"
-  },
-
-  // Keyboard State
-  "keyboard-state": {
-    "numlock": true,
-    "capslock": true,
-    "format": "{name} {icon}",
-    "format-icons": {
-      "locked": "",
-      "unlocked": ""
-    }
   },
 
   // System tray

@@ -1,43 +1,39 @@
 {
-    // General Settings
-    "layer": "top",
-    "margin-top": 0,
-    "margin-bottom": 0,
-    "margin-left": 0,
-    "margin-right": 0,
-    "spacing": 0,
+  // General Settings
+  "layer": "top",
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "spacing": 0,
 
-    // Load Modules
-    "include": [
-        "~/.config/.settings/waybar-quicklinks.json",
-        "~/.config/waybar/modules.json"
-    ],
+  // Load Modules
+  "include": [
+    "~/.config/.settings/waybar-quicklinks.json",
+    "~/.config/waybar/modules.json"
+  ],
 
-    // Modules Left
-    "modules-left": [
-        "hyprland/workspaces"
-    ],
-        // "custom/appmenu",
-        // "group/links",
-        // "wlr/taskbar",
-        // "group/quicklinks",
-        // "hyprland/window",
-        // "custom/empty"
+  // Modules Left
+  "modules-left": [
+    "custom/chatgpt",
+    "hyprland/workspaces"
+  ],
 
-    // Modules Center
-    "modules-center": [],
+  // Modules Center
+  "modules-center": [],
 
-    // Modules Right
-    "modules-right": [
-        "tray",
-        "group/hardware",
-        "group/tools",
-        "custom/updates",
-        "pulseaudio",
-        // "battery", 
-        "network",
-        "bluetooth",
-        "clock",
-        "custom/exit",
-    ]
+  // Modules Right
+  "modules-right": [
+    "group/hardware",
+    "tray",
+    "group/tools",
+    "custom/cliphist",
+    "custom/updates",
+    "pulseaudio",
+    // "battery", 
+    "network",
+    "bluetooth",
+    "clock",
+    "custom/exit",
+  ]
 }
