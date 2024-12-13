@@ -121,6 +121,10 @@ tooltip label {
   opacity: 0.8;
 }
 
+#custom-cliphist {
+  margin-left: 4px;
+}
+
 #custom-updates.green {
   background-color: @backgroundlight;
 }
@@ -138,19 +142,25 @@ tooltip label {
 /* -----------------------------------------------------
  * Hardware Group
  * ----------------------------------------------------- */
+#hardware {
+  margin-right: 8px;
+}
+
+#custom-system {
+  min-width: 30px;
+}
 
 #disk,
-#memory,
 #cpu,
-#language {
+#memory {
   margin: 0px;
   padding: 0px;
   font-size: 16px;
   color: @iconcolor;
 }
 
-#language {
-  margin-right: 10px;
+#memory {
+  margin-right: 4px;
 }
 
 /* -----------------------------------------------------
