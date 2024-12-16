@@ -1,1 +1,2 @@
-firefox --new-window https://chat.openai.com
+firefox https://chat.openai.com
+hyprctl dispatch workspace 2
