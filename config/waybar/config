@@ -1,11 +1,12 @@
 {
   // General Settings
   "layer": "top",
-  "margin-top": 0,
+  "margin-top": 8,
   "margin-bottom": 0,
-  "margin-left": 0,
-  "margin-right": 0,
-  "spacing": 0,
+  "margin-left": 8,
+  "margin-right": 8,
+  "spacing": 8,
+  "height": 32,
 
   // Load Modules
   "include": [
@@ -26,13 +27,12 @@
   "modules-right": [
     "group/hardware",
     "tray",
-    "group/tools",
     "custom/cliphist",
     "custom/updates",
-    "pulseaudio",
     // "battery", 
-    "network",
     "bluetooth",
+    "network",
+    "pulseaudio",
     "clock",
     "custom/exit",
   ]

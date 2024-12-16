@@ -18,26 +18,23 @@
  * ----------------------------------------------------- */
 
 * {
-  font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial,
+  font-family: "Fira Sans Semibold", Roboto, Helvetica, Arial,
     sans-serif;
   border: none;
   border-radius: 0px;
 }
 
 window#waybar {
-  padding: 4px 0 2px 0;
-  background-color: transparent;
+  background: transparent;
 }
 
 /* -----------------------------------------------------
  * Workspaces 
  * ----------------------------------------------------- */
-
 #workspaces {
   background: transparent;
-  margin-left: 8px;
   font-weight: bold;
-  font-family: "MelsoLGL Nerd Font";
+  margin-right: 0px;
 }
 
 #workspaces button {
@@ -88,7 +85,7 @@ tooltip label {
 #custom-system,
 #custom-hypridle,
 #custom-tools {
-  min-width: 24px;
+  min-width: 20px;
   font-size: 20px;
   font-weight: bold;
   color: @iconcolor;
@@ -103,11 +100,13 @@ tooltip label {
 }
 
 #custom-exit {
-  margin: 0px 20px 0px 0px;
-  padding: 0px;
-  font-size: 20px;
+  padding: 0px 16px 0px 8px;
+  font-size: 24px;
   color: @iconcolor;
-  opacity: 0.8;
+}
+
+#custom-exit:hover {
+  background: rgba(0, 0, 0, 0.4);
 }
 
 #custom-updates, #custom-cliphist {
@@ -116,13 +115,8 @@ tooltip label {
   color: @textcolor2;
   border-radius: 15px;
   padding: 2px 10px 0px 10px;
-  margin: 8px 15px 8px 0px;
   min-width: 24px;
   opacity: 0.8;
-}
-
-#custom-cliphist {
-  margin-left: 4px;
 }
 
 #custom-updates.green {
@@ -142,10 +136,6 @@ tooltip label {
 /* -----------------------------------------------------
  * Hardware Group
  * ----------------------------------------------------- */
-#hardware {
-  margin-right: 8px;
-}
-
 #custom-system {
   min-width: 30px;
 }
@@ -153,14 +143,9 @@ tooltip label {
 #disk,
 #cpu,
 #memory {
-  margin: 0px;
   padding: 0px;
   font-size: 16px;
   color: @iconcolor;
-}
-
-#memory {
-  margin-right: 4px;
 }
 
 /* -----------------------------------------------------
@@ -173,7 +158,6 @@ tooltip label {
   color: @textcolor1;
   border-radius: 15px;
   padding: 1px 10px 0px 10px;
-  margin: 8px 15px 8px 0px;
   opacity: 0.8;
   border: 3px solid @bordercolor;
 }
@@ -188,7 +172,6 @@ tooltip label {
   color: @textcolor2;
   border-radius: 15px;
   padding: 2px 10px 0px 10px;
-  margin: 8px 15px 8px 0px;
   opacity: 0.8;
 }
 
@@ -207,7 +190,6 @@ tooltip label {
   color: @textcolor2;
   border-radius: 15px;
   padding: 2px 10px 0px 10px;
-  margin: 8px 15px 8px 0px;
   opacity: 0.8;
 }
 
@@ -233,14 +215,12 @@ tooltip label {
   color: @textcolor2;
   border-radius: 15px;
   padding: 2px 10px 0px 10px;
-  margin: 8px 15px 8px 0px;
   opacity: 0.8;
 }
 
 #bluetooth.off {
   background-color: transparent;
   padding: 0px;
-  margin: 0px;
 }
 
 /* -----------------------------------------------------
@@ -253,7 +233,6 @@ tooltip label {
   color: @textcolor2;
   border-radius: 15px;
   padding: 2px 15px 0px 10px;
-  margin: 8px 15px 8px 0px;
   opacity: 0.8;
 }
 
@@ -285,7 +264,6 @@ tooltip label {
  * ----------------------------------------------------- */
 
 #tray {
-  padding: 0px 12px 0px 12px;
   color: @textcolor3;
 }
 
@@ -298,11 +276,15 @@ tooltip label {
 }
 
 #custom-chatgpt {
-  padding: 0px 4px 0 16px;
-  margin: 4px 0px 4px 12px;
-  min-width: 10px;
+  padding: 0px 8px 0px 8px;
+  min-width: 24px;
   background-image: url("./assets/openai.svg");
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: contain; 
+  background-size: 24px 24px;
+}
+
+#custom-chatgpt:hover{
+  background-color: rgba(0, 0, 0, 0.4);
+  color: @iconcolor;
 }
