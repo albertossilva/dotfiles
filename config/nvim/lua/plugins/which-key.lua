@@ -25,12 +25,14 @@ return {
       { plugin = "neotest", cat = "filetype", name = "neotest-summary" },
       { plugin = "lazy.nvim", cat = "filetype", name = "lazy" },
       { plugin = "CopilotChat.nvim", icon = " ", color = "orange" },
+      { pattern = "lsp", icon = " ", color = "purple" },
       { pattern = "swap next", icon = icons.swapRight, color = "yellow" },
       { pattern = "swap previous", icon = icons.swapLeft, color = "yellow" },
       { pattern = "close buffer", icon = " ", color = "red" },
       { pattern = "%f[%a]git", cat = "filetype", name = "git" },
       { pattern = "terminal", icon = " ", color = "red" },
       { pattern = "find", icon = " ", color = "green" },
+      { pattern = "replace", icon = "󰛔 ", color = "orange" },
       { pattern = "search", icon = " ", color = "green" },
       { pattern = "test", cat = "filetype", name = "neotest-summary" },
       { pattern = "lazy", cat = "filetype", name = "lazy" },
@@ -168,11 +170,10 @@ return {
       k("c", "<cmd>bdelete<CR>", "Close Buffer"),
       k("e", "<cmd>NvimTreeToggle<cr>", "Explorer", i(icons.explorer, "yellow")),
       k("F", "<cmd>Telescope live_grep theme=ivy<cr>", "Find (live grep)", i("󱪦", "purple")),
-      k("S", '<cmd>lua require("spectre").toggle()<CR>', "Search/replace", i("󰛔", "orange")),
       k("k", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy and go", i("󱎸", "green")),
       k("n", next_reference, "Next occurence", i(icons.swapRight)),
+      k("o", "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols", i("")),
       k("p", prev_reference, "Previous occurence", i(icons.swapLeft)),
-      k("s", "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols", i("")),
       k("w", "<cmd>w!<CR>", "Save", i(icons.save, "orange")),
 
       -- Hiding not wanted stuff
@@ -231,6 +232,12 @@ return {
       k("zi", "<cmd>Lazy install<cr>", "Install"),
       k("zs", "<cmd>Lazy sync<cr>", "Sync"),
       k("zu", "<cmd>Lazy update<cr>", "Update"),
+
+      -- Spectre Search/replace
+      { "<leader>s", group = "Search/Replace" },
+      k("sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', "Search on current file"),
+      k("ss", '<cmd>lua require("spectre").toggle()<CR>', "Search/replace", i("󰛔", "orange")),
+      k("sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', "Select current word"),
     })
   end,
 }

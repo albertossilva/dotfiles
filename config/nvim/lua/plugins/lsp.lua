@@ -29,6 +29,7 @@ return {
       local servers = {
         "lua_ls",
         "ts_ls",
+        "jdtls",
       }
 
       mason_lspconfig.setup({ ensure_installed = servers })
