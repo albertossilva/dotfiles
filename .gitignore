@@ -102,3 +102,4 @@ config/transmission
 config/vlc
 config/zoom.conf
 config/zoomus.conf
+config/Podman Desktop
