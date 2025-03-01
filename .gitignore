@@ -103,3 +103,5 @@ config/vlc
 config/zoom.conf
 config/zoomus.conf
 config/Podman Desktop
+config/obsidian
+config/simple-update-notifier
