@@ -11,8 +11,10 @@ end
 
 local function set_keymap(keymaps, opts)
   opts = opts or { noremap = true, silent = true }
-  for keymap, action in pairs(keymaps) do
-    vim.keymap.set("n", keymap, action, opts)
+  for keymap, value in pairs(keymaps) do
+    local keymapOpts = vim.tbl_deep_extend("force", opts, { desc = value.desc })
+
+    vim.keymap.set("n", keymap, value.command, keymapOpts)
   end
 end
 
@@ -37,13 +39,13 @@ local function lsp_highlight_document(client, bufnr)
 end
 
 vim.diagnostic.config({
-  virtual_text = false,   -- disable the annoying text on the right side of the line
+  virtual_text = false, -- disable the annoying text on the right side of the line
   update_in_insert = true, -- check if this option makes larger codebases too slow
 })
 
 set_keymap({
-  ["[d"] = "<Cmd>Lspsaga diagnostic_jump_prev<CR>",
-  ["]d"] = "<Cmd>Lspsaga diagnostic_jump_next<CR>",
+  ["[d"] = { command = "<Cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Jump to previous diagnostic" },
+  ["]d"] = { command = "<Cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump to next diagnostic" },
 })
 
 local M = {}
@@ -54,14 +56,14 @@ M.on_attach = function(client, bufnr)
   k("<Leader>.", "<Cmd>Lspsaga code_action<CR>", "Code Action", bufnr)
   k("<Leader>o", "<Cmd>Lspsaga outline<CR>", "Outline", bufnr)
   set_keymap({
-    ["<Leader>-k"] = vim.lsp.buf.signature_help,
-    ["<Leader>rn"] = "<Cmd>Lspsaga rename<CR>",
-    ["K"] = "<Cmd>Lspsaga hover_doc<CR>",
-    ["gD"] = "<Cmd>Lspsaga finder def+ref+imp<CR>",
-    ["gd"] = "<Cmd>Lspsaga goto_definition<CR>",
-    ["gi"] = "<Cmd>Lspsaga finder imp<CR>",
-    ["gI"] = "<Cmd>Lspsaga incoming_calls<CR>",
-    ["gr"] = "<Cmd>Lspsaga finder ref<CR>",
+    ["<leader>lh"] = { command = "<Cmd>lua vim.lsp.buf.signature_help()<CR>", desc = "Signature help" },
+    ["<Leader>rn"] = { command = "<Cmd>Lspsaga rename<CR>", desc = "Rename" },
+    ["K"] = { command = "<Cmd>Lspsaga hover_doc<CR>", desc = "Describe type" },
+    ["gD"] = { command = "<Cmd>Lspsaga finder def+ref+imp<CR>", desc = "Find any reference" },
+    ["gd"] = { command = "<Cmd>Lspsaga goto_definition<CR>", desc = "Go to definition" },
+    ["gi"] = { command = "<Cmd>Lspsaga finder imp<CR>", desc = "Find implemenations" },
+    ["gI"] = { command = "<Cmd>Lspsaga incoming_calls<CR>", desc = "Find Incoming calls" },
+    ["gr"] = { command = "<Cmd>Lspsaga finder ref<CR>", desc = "Find references" },
   }, bufopts)
 
   lsp_highlight_document(client, bufnr)

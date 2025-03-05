@@ -171,7 +171,7 @@ return {
       k("e", "<cmd>NvimTreeToggle<cr>", "Explorer", i(icons.explorer, "yellow")),
       k("F", "<cmd>Telescope live_grep theme=ivy<cr>", "Find (live grep)", i("󱪦", "purple")),
       k("k", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy and go", i("󱎸", "green")),
-      k("n", next_reference, "Next occurence", i(icons.swapRight)),
+      k("n", "Next occurence", next_reference, i(icons.swapRight)),
       k("o", "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols", i("")),
       k("p", prev_reference, "Previous occurence", i(icons.swapLeft)),
       k("w", "<cmd>w!<CR>", "Save", i(icons.save, "orange")),

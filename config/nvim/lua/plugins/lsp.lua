@@ -30,6 +30,8 @@ return {
         "lua_ls",
         "ts_ls",
         "jdtls",
+        "jsonls",
+        "yamlls",
       }
 
       mason_lspconfig.setup({ ensure_installed = servers })
