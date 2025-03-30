@@ -7,5 +7,10 @@ return {
       validate = { enable = true },
       format = { enable = true },
     },
+    jsonc = {
+      schemas = schemas,
+      validate = { enable = true },
+      format = { enable = true },
+    },
   },
 }

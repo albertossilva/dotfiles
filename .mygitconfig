@@ -105,3 +105,6 @@
   format = ssh
 [maintenance]
   repo = /Users/silvaalb/Work/commerceNext/checkout-service-node18
+[user]
+	name = Alberto Silva
+	email = albertossilva@gmail.com

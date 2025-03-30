@@ -10,6 +10,9 @@ format = 'via [ $version](bold green) '
 [docker_context]
 disabled = true
 
+[aws]
+disabled = true
+
 [directory]
 truncation_length = 10
 truncation_symbol = "…/"

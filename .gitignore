@@ -106,3 +106,9 @@ config/Podman Desktop
 config/obsidian
 config/simple-update-notifier
 config/bcompare5
+config/mockoon
+config/Code
+config/VirtualBox
+config/.gsd-keyboard.settings-ported
+config/systemd
+config/containers
