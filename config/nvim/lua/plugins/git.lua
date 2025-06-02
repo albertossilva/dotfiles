@@ -1,12 +1,11 @@
 return {
   "NeogitOrg/neogit",
   dependencies = {
-    "nvim-lua/plenary.nvim", -- required
-    "sindrets/diffview.nvim", -- optional - Diff integration
+    "nvim-lua/plenary.nvim",
+    "sindrets/diffview.nvim",
 
-    -- Only one of these is needed, not both.
-    "nvim-telescope/telescope.nvim", -- optional
-    "ibhagwan/fzf-lua",            -- optional
+    "nvim-telescope/telescope.nvim",
+    "ibhagwan/fzf-lua",
   },
   config = true,
 }

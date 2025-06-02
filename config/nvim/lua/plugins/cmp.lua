@@ -7,7 +7,6 @@ return {
     "hrsh7th/cmp-cmdline",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lua",
-    "b0o/schemastore.nvim",
     { "L3MON4D3/LuaSnip", version = "v2.*", dependencies = { "rafamadriz/friendly-snippets" } },
   },
   config = function()
@@ -22,9 +21,9 @@ return {
     local icons = require("utils.icons")
     local item_menu = {
       buffer = "[Buffer]",
-      luasnip = "[LuaSnip]",
-      nvim_lsp = "[LSP]",
       nvim_lua = "[nvim_lua]",
+      nvim_lsp = "[LSP]",
+      luasnip = "[LuaSnip]",
     }
 
     cmp.setup({
@@ -63,10 +62,10 @@ return {
         select = false,
       },
       sources = {
-        { name = "luasnip" },
-        { name = "nvim_lsp" },
-        { name = "buffer" },
         { name = "nvim_lua" },
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
         { name = "path" },
       },
       experimental = {

@@ -1,10 +1,11 @@
 return {
   "nvim-lualine/lualine.nvim",
+  event = "VeryLazy",
   config = function()
     local lualine = require("lualine")
 
     local hide_in_width = function()
-    return vim.fn.winwidth(0) > 80
+      return vim.fn.winwidth(0) > 80
     end
 
     local diagnostics = {

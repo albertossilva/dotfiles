@@ -1,22 +1,107 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "neovim/nvim-lspconfig",
     dependencies = {
+      "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "neovim/nvim-lspconfig",
-      "pmizio/typescript-tools.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "nvim-telescope/telescope.nvim",
+      "b0o/schemastore.nvim",
+      "nvimdev/lspsaga.nvim",
     },
     config = function()
-      -- Check if all dependencies are installed, otherwise exits early
-      local dependencies = { "mason", "mason-lspconfig", "lspconfig" }
-      local status_ok, deps = require("utils.prequire")(dependencies, "Failed to start LSP")
-      if not status_ok then
-        return
-      end
+      vim.diagnostic.config({
+        virtual_text = false,
+        update_in_insert = false,
+      })
 
-      local mason, mason_lspconfig, lspconfig = unpack(deps)
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-      mason.setup({
+      local yamlSchemas = require("schemastore").yaml.schemas()
+      local jsonSchemas = require("schemastore").json.schemas()
+
+      local servers = {
+        -- Linters / Formatters
+        eslint_d = {},
+        prettier = {},
+        prettierd = {},
+        stylua = {},
+
+        -- LSPs
+        cssls = {},
+        html = {},
+        jsonls = {
+          settings = {
+            json = {
+              schemas = jsonSchemas,
+              validate = { enable = true },
+              format = { enable = true },
+            },
+            jsonc = {
+              schemas = jsonSchemas,
+              validate = { enable = true },
+              format = { enable = true },
+            },
+          },
+        },
+        lua_ls = {
+          settings = {
+            Lua = {
+              runtime = { version = "LuaJIT" },
+              diagnostics = {
+                globals = { "vim" },
+              },
+              workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
+              },
+              telemetry = { enable = false },
+            },
+          },
+        },
+        rust_analyzer = {},
+        ts_ls = {
+          settings = {
+            typescript = {
+              tsserver = {
+                useSyntaxServer = false,
+              },
+              inlayHints = {
+                includeInlayParameterNameHints = "literal",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+        },
+        yamlls = {
+          settings = {
+            yaml = {
+              schemaStore = { enable = false, url = "" },
+              schemas = yamlSchemas,
+              validate = true,
+              format = { enable = true },
+            },
+          },
+        },
+      }
+
+      require("mason").setup({
         ui = {
           icons = {
             package_installed = "✓",
@@ -26,53 +111,62 @@ return {
         },
       })
 
-      local servers = {
-        "lua_ls",
-        "ts_ls",
-        "jdtls",
-        "jsonls",
-        "yamlls",
-      }
+      require("mason-tool-installer").setup({ ensure_installed = vim.tbl_keys(servers) })
+      require("mason-lspconfig").setup({
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+            require("lspconfig")[server_name].setup(server)
+          end,
+        },
+      })
+      require("lspsaga").setup({})
 
-      mason_lspconfig.setup({ ensure_installed = servers })
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+        callback = function(event)
+          local map = function(keys, func, desc)
+            vim.keymap.set("n", keys, func, { desc = "LSP: " .. desc })
+          end
 
-      local handlers = require("lsp.handlers")
-      for _, server in ipairs(servers) do
-        local settings = {
-          capabitilies = handlers.capabitilies,
-          on_attach = handlers.on_attach,
-        }
+          local bufferMap = function(keys, func, desc)
+            vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+          end
 
-        local settings_ok, server_settings = pcall(require, "lsp.settings." .. server)
-        if settings_ok then
-          settings = vim.tbl_deep_extend("force", server_settings, settings)
-        end
+          map("[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", "Jump to previous diagnostic")
+          map("]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", "Jump to next diagnostic")
 
-        lspconfig[server].setup(settings)
-      end
-    end,
-  },
-  {
-    "nvimdev/lspsaga.nvim",
-    after = "nvim-lspconfig",
-    config = function()
-      local keys = {
-        vsplit = "v",
-        split = "x",
-        shuttle = "[w",
-        toggle_or_open = "o",
-        jump = "e",
-        tabe = "t",
-        tabnew = "r",
-        quit = "q",
-        close = "<C-c>k",
-      }
-      require("lspsaga").setup({
-        event = "LspAttach",
-        ft = { "typescript" },
-        callhierarchy = { keys = keys },
-        finder = { keys = keys },
-        outline = { keys = keys, close_after_jump = true },
+          bufferMap("gd", require("telescope.builtin").lsp_definitions, "[g]oto [d]efinition")
+          bufferMap("gO", require("telescope.builtin").lsp_document_symbols, "[g]et document symb[O]ls")
+          bufferMap("K", "<Cmd>Lspsaga hover_doc<CR>", "Des[k]cribe Type")
+          map("<Leader>.", "<Cmd>Lspsaga code_action<CR>", "Code [a]ction")
+          map("gra", "<Cmd>Lspsaga code_action<CR>", "Code [a]ction")
+          map("grd", "<Cmd>Lspsaga show_buf_diagnostics<CR>", "Show [d]iagnostics")
+          map("grf", "<Cmd>Lspsaga finder<CR>", "[f]inder")
+          map("grn", "<Cmd>Lspsaga rename<CR>", "[r]e[n]ame")
+          map("grr", require("telescope.builtin").lsp_references, "[g]oto [r]eferences")
+          map("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
+
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if client and client.server_capabilities.documentHighlightProvider then
+            vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+              buffer = event.buf,
+              callback = vim.lsp.buf.document_highlight,
+            })
+
+            vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+              buffer = event.buf,
+              callback = vim.lsp.buf.clear_references,
+            })
+
+            -- vim.opt.updatetime = 1000
+          end
+
+          if client.name == "ts_ls" then
+            client.server_capabilities.documentFormattingProvider = false
+          end
+        end,
       })
     end,
   },

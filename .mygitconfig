@@ -14,6 +14,7 @@
   snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
   snapshots = !git stash list --grep snapshot
 
+
   #via http://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit
   recent-branches = !git for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(refname:short)'
 
@@ -24,7 +25,9 @@
 
   # log
   l = log --graph --date=short --pretty=format:\"%C(white)%ad %C(yellow)%h%C(green)%d %C(blue)%s %C(magenta) [%aN]%Creset\"
+  change-date=log -1 --pretty="format:%ci"
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
+  filelog = log -u                  # show changes to a file
 
   # remote
   r = remote -v                     # show remotes (verbose)
@@ -32,11 +35,7 @@
   # reset
   unstage = reset HEAD              # remove files from index (tracking)
   uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
-  filelog = log -u                  # show changes to a file
   mt = mergetool                    # fire up the merge tool
-
-  # tag
-  t = tag -n                        # show tags with <n> lines of each tag message
 [log]
   decorate=auto
 [mergetool]
