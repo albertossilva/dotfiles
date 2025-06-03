@@ -13,5 +13,5 @@ x-scheme-handler/tonsite=org.telegram.desktop.desktop;
 application/zip=org.gnome.FileRoller.desktop;
 video/x-matroska=vlc.desktop;
 image/png=gimp.desktop;
-image/jpeg=gimp.desktop;
+image/jpeg=firefox.desktop;gimp.desktop;
 text/x-scss=org.xfce.mousepad.desktop;

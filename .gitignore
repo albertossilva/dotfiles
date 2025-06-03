@@ -112,3 +112,7 @@ config/VirtualBox
 config/.gsd-keyboard.settings-ported
 config/systemd
 config/containers
+config/NayaFlow/
+config/obs-studio/
+config/k9s
+config/Meltytech/
