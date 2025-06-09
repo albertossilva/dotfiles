@@ -137,16 +137,15 @@ return {
           map("[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", "Jump to previous diagnostic")
           map("]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", "Jump to next diagnostic")
 
-          bufferMap("gd", require("telescope.builtin").lsp_definitions, "[g]oto [d]efinition")
+          map("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
+          bufferMap("gd", "<Cmd>Lspsaga goto_definition<CR>", "[g]oto [d]efinition")
           bufferMap("gO", require("telescope.builtin").lsp_document_symbols, "[g]et document symb[O]ls")
           bufferMap("K", "<Cmd>Lspsaga hover_doc<CR>", "Des[k]cribe Type")
           map("<Leader>.", "<Cmd>Lspsaga code_action<CR>", "Code [a]ction")
-          map("gra", "<Cmd>Lspsaga code_action<CR>", "Code [a]ction")
-          map("grd", "<Cmd>Lspsaga show_buf_diagnostics<CR>", "Show [d]iagnostics")
-          map("grf", "<Cmd>Lspsaga finder<CR>", "[f]inder")
-          map("grn", "<Cmd>Lspsaga rename<CR>", "[r]e[n]ame")
-          map("grr", require("telescope.builtin").lsp_references, "[g]oto [r]eferences")
-          map("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
+          map("<leader>ld", "<Cmd>Lspsaga show_buf_diagnostics<CR>", "Show [d]iagnostics")
+          map("<leader>lF", "<Cmd>Lspsaga finder<CR>", "LSP [f]inder")
+          map("<leader>lr", "<Cmd>Lspsaga rename<CR>", "[r]e[n]ame")
+          map("<leader>lR", require("telescope.builtin").lsp_references, "[g]oto [r]eferences")
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then

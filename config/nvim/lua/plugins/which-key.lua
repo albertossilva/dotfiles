@@ -205,7 +205,6 @@ return {
       wk.setup(setup)
       wk.add({
         k("<leader>", "<cmd>Telescope find_files<cr>", "Find Files", i("󰱼", "purple")),
-        k("/", "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Toggle Comment"),
         -- letters
         k("b", "<cmd>Telescope buffers<cr>", "Buffers"),
         k("c", "<cmd>bdelete<CR>", "Close Buffer"),
@@ -213,9 +212,9 @@ return {
         k("F", "<cmd>Telescope live_grep theme=ivy<cr>", "Find (live grep)", i("󱪦", "purple")),
         k("k", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy and go", i("󱎸", "green")),
         k("n", "Next occurence", next_reference, i(icons.swapRight)),
-        k("o", "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols", i("")),
         k("p", prev_reference, "Previous occurence", i(icons.swapLeft)),
         k("w", "<cmd>w!<CR>", "Save", i(icons.save, "orange")),
+        k("/", "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Toggle Comment"),
 
         -- Hiding not wanted stuff
         { "<leader>-", hidden = true },
@@ -251,7 +250,6 @@ return {
 
         -- LSP
         { "<leader>l", group = "LSP" },
-        k("ld", "<cmd>Telescope diagnostics<cr>", "Document Diagnostics"),
         k("lf", function()
           require("conform").format({
             lsp_fallback = true,
@@ -260,11 +258,6 @@ return {
           })
         end, "Format"),
         k("li", "<cmd>LspInfo<cr>", "Info", i("", "yellow")),
-        -- k("lj", "<cmd>TODO diagnostic_jump_next<CR>", "Next Diagnostic"),
-        -- k("lk", "<cmd>TODO diagnostic_jump_prev<cr>", "Prev Diagnostic"),
-        -- k("ll", "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action"),
-        -- k("lr", "<cmd>TODO rename<cr>", "Rename", i("󰑕", "cyan")),
-        k("ls", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols", i("")),
 
         -- Lazy Plugin Manager
         { "<leader>p", group = "Plugins (Lazy)" },
