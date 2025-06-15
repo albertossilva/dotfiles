@@ -122,9 +122,7 @@ export NVM_DIR="$HOME/.nvm"
 # LOCAL
 export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
 # Fuzzy finder
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-eval "$(starship init zsh)"
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
@@ -135,3 +133,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"
 
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh --disable-up-arrow)"
+
+eval "$(starship init zsh)"
