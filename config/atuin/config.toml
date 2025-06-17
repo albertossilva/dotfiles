@@ -149,7 +149,7 @@ show_help = true
 # This applies for new installs. Old installs will keep the old behaviour unless configured otherwise.
 enter_accept = true
 
-## Defaults to "emacs".  This specifies the keymap on the startup of  true
+## Defaults to "emacs".  This specifies the keymap on the startup of `atuin
 ## search`.  If this is set to "auto", the startup keymap mode in the Atuin
 ## search is automatically selected based on the shell's keymap where the
 ## keybinding is defined.  If this is set to "emacs", "vim-insert", or

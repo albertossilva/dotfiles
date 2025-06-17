@@ -131,10 +131,15 @@ export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="~/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 . "$HOME/.atuin/bin/env"
 
-eval "$(atuin init zsh --disable-up-arrow)"
+test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"
 
+eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(starship init zsh)"
+
