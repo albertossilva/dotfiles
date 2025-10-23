@@ -111,7 +111,7 @@ alt-h = 'split horizontal'
 alt-v = 'split vertical'
 
 alt-f = 'fullscreen'
-alt-shift-space = 'layout floating tiling'
+alt-shift-space = 'layout tiles tiling floating'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-1 = 'workspace 1'
@@ -123,7 +123,7 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-alt-0 = 'workspace 0'
+alt-0 = 'workspace O'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
@@ -135,7 +135,7 @@ alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
 alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
 alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
 alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
-alt-shift-0 = ['move-node-to-workspace 0', 'workspace 0']
+alt-shift-0 = ['move-node-to-workspace O', 'workspace O']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -166,7 +166,6 @@ esc = 'mode main'
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
@@ -190,13 +189,13 @@ if.app-id = 'com.microsoft.teams2'
 run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
-if.app-id = 'com.microsoft.Outlook'
+if.app-id = 'com.postmanlabs.mac'
 run = "move-node-to-workspace 4"
 
 [[on-window-detected]]
-if.app-id = 'com.postmanlabs.mac'
+if.app-id = 'com.microsoft.Outlook'
 run = "move-node-to-workspace 5"
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = "move-node-to-workspace 0"
+run = "move-node-to-workspace O"

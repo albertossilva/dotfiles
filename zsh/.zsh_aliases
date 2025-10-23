@@ -1,8 +1,9 @@
-alias shit="fuck"
-alias docker="podman"
-alias p="podman"
-alias v="neovim"
-alias k="kubectl"
+alias shit=fuck
+alias docker=podman
+alias p=podman
+alias pn=pnpm
+alias v=nvim
+alias k=kubectl
 
 # PS
 alias psa="ps aux"
