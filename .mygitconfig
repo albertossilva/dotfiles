@@ -21,6 +21,7 @@
   # branch
   b = branch -v                     # branch (verbose)
   last = diff HEAD^                 # diff last committed change
+  show-changes = show --format=
   staash = stash --all
 
   # log

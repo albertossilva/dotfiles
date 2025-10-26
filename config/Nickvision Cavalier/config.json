@@ -24,7 +24,7 @@
   "LinesThickness": 5,
   "Mode": 3,
   "Mirror": 1,
-  "ReverseMirror": false,
+  "ReverseMirror": true,
   "InnerRadius": 0.5,
   "Rotation": 0,
   "ColorProfiles": [
