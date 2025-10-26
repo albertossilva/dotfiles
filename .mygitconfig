@@ -108,3 +108,5 @@
 [user]
 	name = Alberto Silva
 	email = albertossilva@gmail.com
+[http]
+	postBuffer = 524288000
