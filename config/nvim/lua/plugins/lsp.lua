@@ -2,6 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      "stevearc/conform.nvim",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -21,13 +22,6 @@ return {
       local jsonSchemas = require("schemastore").json.schemas()
 
       local servers = {
-        -- Linters / Formatters
-        eslint_d = {},
-        prettier = {},
-        prettierd = {},
-        stylua = {},
-
-        -- LSPs
         cssls = {},
         html = {},
         jsonls = {
@@ -101,6 +95,35 @@ return {
         },
       }
 
+      local stylers = {
+        eslint_d = {},
+        prettier = {},
+        prettierd = {},
+        stylua = {},
+      }
+
+      require("conform").setup({
+        formatters_by_ft = {
+          lua = { "stylua" },
+          javascript = { "prettierd" },
+          typescript = { "prettierd" },
+          javascriptreact = { "prettier" },
+          typescriptreact = { "prettier" },
+          css = { "prettier" },
+          html = { "prettier" },
+          yaml = { "prettier" },
+          markdown = { "prettier" },
+          json = { "jq" },
+        },
+
+        format_on_save = {
+          -- These options will be passed to conform.format()
+          timeout_ms = 1000,
+          async = false,
+          lsp_fallback = true,
+        },
+      })
+
       require("mason").setup({
         ui = {
           icons = {
@@ -111,8 +134,13 @@ return {
         },
       })
 
-      require("mason-tool-installer").setup({ ensure_installed = vim.tbl_keys(servers) })
+      require("mason-tool-installer").setup({
+        ensure_installed = vim.tbl_keys(stylers),
+        automatic_installation = true,
+      })
       require("mason-lspconfig").setup({
+        ensure_installed = vim.tbl_keys(servers),
+        automatic_installation = true, -- not the same as ensure_installed
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}

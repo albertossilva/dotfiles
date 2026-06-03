@@ -7,22 +7,18 @@
   "margin-right": 8,
   "spacing": 8,
   "height": 32,
-
   // Load Modules
   "include": [
     "~/.config/.settings/waybar-quicklinks.json",
     "~/.config/waybar/modules.json"
   ],
-
   // Modules Left
   "modules-left": [
     "custom/chatgpt",
     "hyprland/workspaces"
   ],
-
   // Modules Center
   "modules-center": [],
-
   // Modules Right
   "modules-right": [
     "group/hardware",
@@ -34,6 +30,6 @@
     "network",
     "pulseaudio",
     "clock",
-    "custom/exit",
+    "custom/exit"
   ]
 }

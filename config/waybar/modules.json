@@ -19,18 +19,6 @@
     }
   },
 
-  // Hyprland Window
-  "hyprland/window": {
-    "rewrite": {
-      "(.*) - Brave": "$1",
-      "(.*) - Chromium": "$1",
-      "(.*) - Brave Search": "$1",
-      "(.*) - Outlook": "$1",
-      "(.*) Microsoft Teams": "$1"
-    },
-    "separate-outputs": true
-  },
-
   "custom/chatgpt": {
     "format": " ",
     "on-click": "sleep 0.1 && ~/.dotfiles/config/.settings/ai.sh",
@@ -164,10 +152,10 @@
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
     "format": "{icon}  {volume}%",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
+    "format-bluetooth": " {icon}  {volume}%",
+    "format-bluetooth-muted": " {icon} {volume}%",
+    "format-muted": "🔇 {format_source}",
+    "format-source": "{volume}%",
     "format-source-muted": "",
     "format-icons": {
       "headphone": " ",
@@ -184,7 +172,7 @@
 
   // Bluetooth
   "bluetooth": {
-    "format": "  {num_connections}",
+    "format": " {num_connections}",
     "format-disabled": "",
     "format-off": "",
     "interval": 60,

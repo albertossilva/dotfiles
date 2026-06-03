@@ -1,0 +1,69 @@
+outputs = "All"
+position = "Top"
+
+[appearance]
+scale_factor = 1.6
+font_name = "Fira Sans Semibold"
+
+[appearance.menu]
+opacity = 0.7
+backdrop = 0.3
+
+[modules]
+left = [ [ "appLauncher", "ai", "fileExplorer", "Workspaces" ] ]
+center = [ "Tempo" ]
+right = [ [ "Privacy", "Tray", "Updates", "activityMonitor", "SystemInfo" ], [ "MediaPlayer", "Settings" ] ]
+
+[media_player]
+indicator_format = "Icon"
+
+[tempo]
+clock_format = "%a %d, %b %R"
+weather_location = { City = "Tarragona" }
+timezones = [
+  "Europe/Madrid",
+  "America/Sao_Paulo",
+  "UTC"
+]
+
+[window_title]
+mode = "Title"
+truncate_title_after_length = 400
+
+[[CustomModule]]
+name = "ai"
+icon = "󱙺"
+command = "sleep 0.1 && ~/.dotfiles/config/.settings/ai.sh"
+
+[[CustomModule]]
+name = "fileExplorer"
+icon = "󰪶"
+command = "sleep 0.1 && ~/.dotfiles/config/.settings/filemanager.sh"
+
+[[CustomModule]]
+name = "activityMonitor"
+icon = "󰡳"
+command = "sleep 0.1 && ~/.dotfiles/config/.settings/systeminfo.sh"
+
+[[CustomModule]]
+name = "appLauncher"
+icon = "󱗼"
+command = "rofi -show drun"
+
+[workspaces]
+visibility_mode = "All"
+group_by_monitor = false
+enable_workspace_filling = false
+workspace_names = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" ]
+
+[updates]
+check_cmd = "yay -Qu"
+update_cmd = 'kitty --class dotfiles-floating -e ~/.config/scripts/installupdates.sh &'
+interval = 3600
+
+[[settings.PowerSettings]]
+shutdown_cmd = '~/.config/hypr/scripts/power.sh shutdown'
+suspend_cmd = "~/.config/hypr/scripts/power.sh suspend"
+hibernate_cmd = "~/.config/hypr/scripts/power.sh hibernate"
+reboot_cmd = "~/.config/hypr/scripts/power.sh reboot"
+logout_cmd = '~/.config/hypr/scripts/power.sh logout'

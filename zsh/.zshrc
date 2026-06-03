@@ -123,6 +123,7 @@ export NVM_DIR="$HOME/.nvm"
 export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
 # Fuzzy finder
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="$HOME/.fzf/bin:$PATH"
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
@@ -130,7 +131,6 @@ export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
