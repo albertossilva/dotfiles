@@ -1,0 +1,19 @@
+close_when_open = true
+click_to_close = true
+
+[keybinds]
+close = ["Escape"]
+next = ["ctrl j", "Down", "Tab"]
+previous = ["ctrl k", "Up"]
+toggle_exact = ["ctrl e"]           # Toggle exact search mode
+resume_last_query = ["ctrl r"]      # Resume last query (service mode)
+quick_activate = ["F1", "F2", "F3", "F4"]  # Quick activation keys
+
+[providers]
+default = [
+  "desktopapplications",
+  "calc",
+  "websearch",
+]
+empty = ["desktopapplications"]
+

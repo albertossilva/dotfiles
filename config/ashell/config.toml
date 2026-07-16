@@ -1,5 +1,15 @@
 outputs = "All"
 position = "Top"
+region = "en-BR"
+
+[osd]
+enabled = true
+timeout = 1500
+show_volume_percentage = true
+show_brightness_percentage = true
+
+[animations]
+enabled = true
 
 [appearance]
 scale_factor = 1.6
@@ -48,7 +58,7 @@ command = "sleep 0.1 && ~/.dotfiles/config/.settings/systeminfo.sh"
 [[CustomModule]]
 name = "appLauncher"
 icon = "󱗼"
-command = "rofi -show drun"
+command = "walker"
 
 [workspaces]
 visibility_mode = "All"

@@ -168,7 +168,7 @@ return {
           map("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
           bufferMap("gd", "<Cmd>Lspsaga goto_definition<CR>", "[g]oto [d]efinition")
           bufferMap("gO", require("telescope.builtin").lsp_document_symbols, "[g]et document symb[O]ls")
-          bufferMap("K", "<Cmd>Lspsaga hover_doc<CR>", "Des[k]cribe Type")
+          bufferMap("K", vim.lsp.buf.hover, "Des[k]cribe Type")
           map("<Leader>.", "<Cmd>Lspsaga code_action<CR>", "Code [a]ction")
           map("<leader>ld", "<Cmd>Lspsaga show_buf_diagnostics<CR>", "Show [d]iagnostics")
           map("<leader>lF", "<Cmd>Lspsaga finder<CR>", "LSP [f]inder")

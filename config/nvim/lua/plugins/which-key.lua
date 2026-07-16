@@ -220,11 +220,6 @@ return {
         { "<leader>-", hidden = true },
         { "<leader>fmt", hidden = true },
         { "<leader>r", hidden = true },
-        --Hop to
-        { "<leader>j", group = "Hop", icon = i("󰞁") },
-        k("jw", "<cmd>HopWord<cr>", "To word", i("󱀾", "yellow")),
-        k("jk", "<cmd>HopWordCurrentLine<cr>", "Same line", i("", "yellow")),
-        k("jj", "<cmd>HopPattern<cr>", "By pattern", i("󱩀")),
 
         -- Finders
         { "<leader>f", group = "Finders" },

@@ -10,7 +10,7 @@ return {
       { "nvim-lua/plenary.nvim", branch = "master" },
     },
     opts = {
-      model = "gpt-5.2", -- AI model to use
+      model = "gpt-5.5", -- AI model to use
       window = {
         layout = "vertical", -- 'vertical', 'horizontal', 'float'
         width = 0.4, -- 50% of screen width
