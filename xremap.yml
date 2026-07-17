@@ -1,0 +1,4 @@
+modmap:
+  - name: "Caps Lock as Control"
+    remap:
+      CapsLock: Control_L

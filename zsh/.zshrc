@@ -9,7 +9,6 @@ export GPG_TTY=`tty`
 export LESS="-XRF" # Beautiful less
 export GREP_OPTIONS=--color=always
 
-export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
 source ~/.dotfiles/zsh/gruvbox_256palette_osx.sh
 
 # BREW
@@ -26,25 +25,11 @@ source $DOTFILES/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DOTFILES/zsh/.zsh_aliases
 source $DOTFILES/zsh/.zsh_abbreviations
 
-
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=black,fg=yellow,bold'
 
 source $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-
-# Fuzzy finder
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/.dotfiles/forgit
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-[ -f "/Users/silvaalb/.ghcup/env" ] && source "/Users/silvaalb/.ghcup/env" # ghcup-env
-
-
-# LOCAL
-test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"
 
 timezsh() {
   shell=${1-$SHELL}
@@ -65,6 +50,7 @@ setopt EXTENDED_GLOB     # Use extended globbing syntax.
 # HISTORY
 export HISTSIZE=10000 # Maximum events for internal history
 export SAVEHIST=10000 # Maximum events in history file
+export HISTFILE=~/.zsh_history
 
 setopt EXTENDED_HISTORY       # Write the history file in the ':start:elapsed;command' format.
 setopt SHARE_HISTORY          # Share history between all sessions.
@@ -120,22 +106,40 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
-bindkey -s '^o' 'lfcd\n'
-
 # VI MODE
 bindkey -v
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+eval $(thefuck --alias)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+
+# LOCAL
+export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
+# Fuzzy finder
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="$HOME/.fzf/bin:$PATH"
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+. "$HOME/.atuin/bin/env"
+
+test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"
+
+eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(starship init zsh)"
+

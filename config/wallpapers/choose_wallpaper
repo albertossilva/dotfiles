@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+DIR="~/.config/wallpapers"
+
+selected=$(
+    for img in ~/.config/wallpapers/*.{png,jpg,jpeg}; do
+        [ -e "$img" ] || continue
+        printf "%s\0icon\x1f%s\n" "$(basename "$img")" "$img"
+    done | rofi -dmenu -show-icons -replace -config ~/.config/rofi/config-wallpaper.rasi
+)
+
+[ -n "$selected" ] || exit 0
+
+config="$HOME/.dotfiles/config/hypr/hyprpaper.conf"
+selected="$HOME/.config/wallpapers/$selected"
+
+sed -i "s|^\([[:space:]]*path[[:space:]]*=[[:space:]]*\).*|\1$selected|" "$config"
+hyprctl hyprpaper wallpaper ", $selected, cover"

@@ -1,0 +1,36 @@
+bindings:
+  # the keys that cause the presentation to move forwards.
+  next: ["l", "j", "<right>", "<page_down>", "<down>", " "]
+
+  # the keys that cause the presentation to move backwards.
+  previous: ["h", "k", "<left>", "<page_up>", "<up>"]
+
+  # the key binding to jump to the first slide.
+  first_slide: ["gg"]
+
+  # the key binding to jump to the last slide.
+  last_slide: ["G"]
+
+  # the key binding to jump to a specific slide.
+  go_to_slide: ["<number>G"]
+
+  # the key binding to execute a piece of shell code.
+  execute_code: ["<c-e>"]
+
+  # the key binding to reload the presentation.
+  reload: ["<c-r>"]
+
+  # the key binding to toggle the slide index modal.
+  toggle_slide_index: ["<c-p>"] 
+
+  # the key binding to toggle the key bindings modal.
+  toggle_bindings: ["?"] 
+
+  # the key binding to close the currently open modal.
+  close_modal: ["x"]
+
+  # the key binding to close the application.
+  exit: ["<c-c>", "q", "<esc>"]
+
+  # the key binding to suspend the application.
+  suspend: ["<c-z>"]
