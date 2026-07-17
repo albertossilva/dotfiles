@@ -33,15 +33,15 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 	hl.exec_cmd("~/.config/ashell/launch.sh")
 	hl.exec_cmd("dunst")
-	hl.exec_cmd("walker --gapplication-service")
 	hl.exec_cmd("systemctl --user start elephant.service")
+	hl.exec_cmd("walker --gapplication-service")
 	hl.exec_cmd("~/.config/hypr/scripts/gtk.sh")
 	hl.exec_cmd("wl-paste --watch cliphist store")
-	hl.exec_cmd("~/.config/hypr/scripts/eww.sh")
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("hyprpm reload -n")
-	hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
-	hl.exec_cmd("kitty && firefox")
+	-- -- hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
+	hl.exec_cmd("firefox")
+	hl.exec_cmd("kitty -e ~/.config/scripts/startTmux.sh")
 end)
 
 hl.config({
@@ -177,6 +177,7 @@ bindCommand("R", "hyprlauncher") -- backup for walker
 bindCommand("A", "~/.config/.settings/ai.sh")
 bindCommand("B", "~/.config/.settings/browser.sh")
 bindCommand("E", "~/.config/.settings/filemanager.sh")
+bindCommand("SHIFT + W", "~/.config/wallpapers/choose_wallpaper")
 bindCommand(
 	"SHIFT + E",
 	"rofi -show emoji -no-show-match -no-sort -config ~/.config/rofi/config-emoji.rasi -replace -i"
@@ -186,43 +187,46 @@ bindCommand("F8", HYPRSCRIPTS .. "screenshot.sh")
 
 -- Session
 bindCommand("Delete", "hyprshutdown")
+bind("Page_Down", hl.dsp.exit())
 
--- Layout management
-bind("S", hy3.change_group("opposite"))
-bind("G", hy3.make_group("h"))
-bind("V", hy3.make_group("v"))
+if hy3 then
+	-- Layout management
+	bind("S", hy3.change_group("opposite"))
+	bind("G", hy3.make_group("h"))
+	bind("V", hy3.make_group("v"))
 
--- Window management
-bind("SHIFT + Q", hy3.kill_active())
-bind("F", hl.dsp.window.fullscreen())
-bind("T", hl.dsp.window.float())
-bind("C", hl.dsp.window.center())
+	-- Window management
+	bind("SHIFT + Q", hy3.kill_active())
+	bind("F", hl.dsp.window.fullscreen())
+	bind("T", hl.dsp.window.float())
+	bind("C", hl.dsp.window.center())
 
--- Window navigation
-bind("Tab", hl.dsp.window.cycle_next())
-bind("H", hy3.move_focus("l"))
-bind("J", hy3.move_focus("u"))
-bind("K", hy3.move_focus("d"))
-bind("L", hy3.move_focus("r"))
+	-- Window navigation
+	bind("Tab", hl.dsp.window.cycle_next())
+	bind("H", hy3.move_focus("l"))
+	bind("J", hy3.move_focus("u"))
+	bind("K", hy3.move_focus("d"))
+	bind("L", hy3.move_focus("r"))
 
-bind("SHIFT + H", hy3.move_window("l"))
-bind("SHIFT + J", hy3.move_window("u"))
-bind("SHIFT + K", hy3.move_window("d"))
-bind("SHIFT + L", hy3.move_window("r"))
+	bind("SHIFT + H", hy3.move_window("l"))
+	bind("SHIFT + J", hy3.move_window("u"))
+	bind("SHIFT + K", hy3.move_window("d"))
+	bind("SHIFT + L", hy3.move_window("r"))
 
--- bind = $mainMod, P, submap, passthru # Passthrough SUPER key to virtual machine
--- submap = passthru
--- bind = SUPER, Escape, submap, reset # Get SUPER key back from virtual machine
--- submap = reset
+	-- bind = $mainMod, P, submap, passthru # Passthrough SUPER key to virtual machine
+	-- submap = passthru
+	-- bind = SUPER, Escape, submap, reset # Get SUPER key back from virtual machine
+	-- submap = reset
 
--- Workspace management
-bind("M", hl.dsp.workspace.toggle_special("magic"))
-bind("SHIFT + M", hl.dsp.window.move({ workspace = "special:magic" }))
+	-- Workspace management
+	bind("M", hl.dsp.workspace.toggle_special("magic"))
+	bind("SHIFT + M", hl.dsp.window.move({ workspace = "special:magic" }))
 
-for i = 1, 10 do
-	local key = i % 10
-	bind(key, hl.dsp.focus({ workspace = i }))
-	bind("SHIFT + " .. key, hy3.move_to_workspace(i, { follow = true }))
+	for i = 1, 10 do
+		local key = i % 10
+		bind(key, hl.dsp.focus({ workspace = i }))
+		bind("SHIFT + " .. key, hy3.move_to_workspace(i, { follow = true }))
+	end
 end
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
