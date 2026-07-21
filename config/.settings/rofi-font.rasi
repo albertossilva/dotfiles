@@ -1,1 +1,4 @@
-configuration { font: "Fira Sans 11"; }
+configuration {
+  font: "MesloLGL Nerd Font 14";
+}
+

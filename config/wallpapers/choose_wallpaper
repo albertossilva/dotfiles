@@ -16,3 +16,5 @@ selected="$HOME/.config/wallpapers/$selected"
 
 sed -i "s|^\([[:space:]]*path[[:space:]]*=[[:space:]]*\).*|\1$selected|" "$config"
 hyprctl hyprpaper wallpaper ", $selected, cover"
+
+sh ~/.config/wallpapers/wallpaper.sh $selected

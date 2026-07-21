@@ -12,7 +12,6 @@ show_brightness_percentage = true
 [animations]
 enabled = true
 
-
 [appearance.menu]
 opacity = 0.7
 backdrop = 0.3
@@ -23,18 +22,11 @@ font_name = "MesloLGL Nerd Font"
 success_color = "#a6e3a1"
 warning_color = "#f9e2af"
 danger_color = "#f38ba8"
-text_color = "#cdd6f4"
+primary_color = "#7aa2f7"
+background_color = "#1a1b26"
+text_color = "#a9b1d6"
 
 workspace_colors = [ "#fab387", "#b4befe", "#cba6f7" ]
-
-[appearance.primary_color]
-base = "#fab387"
-text = "#1e1e2e"
-
-[appearance.background_color]
-base = "#1e1e2e"
-weak = "#313244"
-strong = "#45475a"
 
 [modules]
 left = [ [ "appLauncher", "ai", "fileExplorer", "Workspaces" ] ]
@@ -123,3 +115,4 @@ name = "Do Not Disturb"
 icon = "󰂛"
 status_command = "~/.config/scripts/notifications-state.sh"
 command = "~/.config/scripts/toggle-notifications-state.sh"
+

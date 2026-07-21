@@ -12,7 +12,7 @@ fi
 
 if [[ "$1" == "lock" ]]; then
   echo ":: Lock"
-  hyprlock
+  hyprlock --grace 20
 fi
 
 if [[ "$1" == "reboot" ]]; then

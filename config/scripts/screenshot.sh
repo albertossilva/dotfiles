@@ -11,19 +11,12 @@ option3="Current display (delay $SLEEP sec)"
 option4="Fullscreen (delay $SLEEP sec)"
 
 options="$option1\n$option2\n$option3\n$option4"
-current_hyprshade=""
 
 IFS='\n' read -ra linesSplit <<< "$options"
 lines=${#linesSplit[@]}
 lines=$((lines / 2))
 
 choice=$(echo -e "$options" | rofi -dmenu -replace -config ~/.config/rofi/config-screenshot.rasi -i -no-show-icons -l $lines -width 30 -p "Take Screenshot")
-
-if [ ! -z $(hyprshade current) ] ;then
-    current_hyprshade=$(hyprshade current)
-    echo ":: Switch hyprshade off"
-    hyprshade off
-fi
 
 slurp=""
 if [[ "$choice" == *Selected* ]]; then
@@ -48,9 +41,6 @@ case $choice in
 esac
 
 if [[ "$choice" != "" ]]; then
-  if [ ! -z $current_hyprshade ] ;then
-    hyprshade on $current_hyprshade
-  fi
   xclip -selection clipboard -t image/jpeg -i "$FILENAME"
   notify-send "Screenshot created and copied to clipboard" "$choice" -i "$FILENAME"
   swappy -f "$FILENAME"

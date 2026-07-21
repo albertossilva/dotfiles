@@ -6,6 +6,7 @@ hl.monitor({
 })
 
 -- XDG Desktop Portal
+hl.env("OZONE_PLATFORM", "wayland")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
@@ -31,21 +32,31 @@ hl.env("HYPRCURSOR_SIZE", "32")
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
-	hl.exec_cmd("~/.config/hypr/scripts/gtk.sh")
+	hl.exec_cmd("~/.config/scripts/gtk.sh")
 	hl.exec_cmd("~/.config/ashell/launch.sh")
 
-	hl.exec_cmd("dunst")
 	hl.exec_cmd("systemctl --user start elephant.service")
 	hl.exec_cmd("walker --gapplication-service")
 
-	hl.exec_cmd("wl-paste --watch cliphist store")
+	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("hyprpm reload -n")
+	hl.exec_cmd("~/.config/scripts/xdg.sh")
 	hl.exec_cmd("firefox")
 	hl.exec_cmd("kitty -e ~/.config/scripts/startTmux.sh")
-	hl.exec_cmd("kitty -e ~/.config/hypr/scripts/xdg.sh")
 end)
+
+local function update_visibility(window)
+	local visible = window.fullscreen ~= 1
+	-- hl.exec_cmd("ashell msg toggle-visibility")
+end
+
+hl.on("window.active", update_visibility)
+hl.on("window.fullscreen", update_visibility)
+
+local home = os.getenv("HOME")
+local colors = dofile(home .. "/.cache/wal/colors-hyprland.lua")
 
 hl.config({
 	general = {
@@ -54,12 +65,12 @@ hl.config({
 		gaps_out = { top = 4, right = 12, bottom = 12, left = 12 },
 
 		border_size = 1,
-		--
-		-- 		col = {
-		-- 			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-		-- 			inactive_border = "rgba(595959aa)",
-		-- 		},
-		--
+
+		col = {
+			active_border = { colors = { colors.color2, colors.foreground }, angle = 45 },
+			inactive_border = colors.background,
+		},
+
 		resize_on_border = true,
 	},
 
@@ -70,7 +81,7 @@ hl.config({
 			enabled = true,
 			range = 4,
 			render_power = 3,
-			color = 0xee1a1a1a,
+			color = colors.background,
 		},
 		active_opacity = 1.0,
 		inactive_opacity = 0.9,
@@ -171,26 +182,41 @@ local bindCommand = function(keys, command, opts)
 end
 
 local hy3 = hl.plugin.hy3
-local HYPRSCRIPTS = "~/.config/hypr/scripts/"
+local SETTINGS = "~/.config/.settings/"
+local SCRIPTS = "~/.config/scripts/"
 
 -- Applications
-bindCommand("Return", "~/.config/.settings/terminal.sh")
+bindCommand("Return", SETTINGS .. "terminal.sh")
 bindCommand("Space", "walker")
 bindCommand("R", "hyprlauncher") -- backup for walker
-bindCommand("A", "~/.config/.settings/ai.sh")
-bindCommand("B", "~/.config/.settings/browser.sh")
-bindCommand("E", "~/.config/.settings/filemanager.sh")
-bindCommand("SHIFT + W", "~/.config/wallpapers/choose_wallpaper")
-bindCommand(
-	"SHIFT + E",
-	"rofi -show emoji -no-show-match -no-sort -config ~/.config/rofi/config-emoji.rasi -replace -i"
-)
+bindCommand("A", SETTINGS .. "ai.sh")
+bindCommand("B", SETTINGS .. "browser.sh")
+bindCommand("E", SETTINGS .. "filemanager.sh")
+bindCommand("SHIFT + W", SETTINGS .. "choose-wallpaper.sh")
+bindCommand("SHIFT + E", SETTINGS .. "choose-emoji.sh")
 bindCommand("SHIFT + B", "~/.config/ashell/launch.sh")
-bindCommand("F8", HYPRSCRIPTS .. "screenshot.sh")
+bindCommand("SHIFT + F", SCRIPTS .. "fc.sh")
+bindCommand("SHIFT + V", SCRIPTS .. "cliphist.sh")
+bindCommand("F8", SCRIPTS .. "screenshot.sh")
 
 -- Session
 bindCommand("Delete", "hyprshutdown")
 bind("Page_Down", hl.dsp.exit())
+
+-- Window management
+bind("F", hl.dsp.window.fullscreen())
+bind("T", hl.dsp.window.float())
+bind("C", hl.dsp.window.center())
+bind("Tab", hl.dsp.window.cycle_next())
+
+-- bind = $mainMod, P, submap, passthru # Passthrough SUPER key to virtual machine
+-- submap = passthru
+-- bind = SUPER, Escape, submap, reset # Get SUPER key back from virtual machine
+-- submap = reset
+
+-- Workspace management
+bind("M", hl.dsp.workspace.toggle_special("m"))
+bind("SHIFT + M", hl.dsp.window.move({ workspace = "special:m" }))
 
 if hy3 then
 	-- Layout management
@@ -200,12 +226,8 @@ if hy3 then
 
 	-- Window management
 	bind("SHIFT + Q", hy3.kill_active())
-	bind("F", hl.dsp.window.fullscreen())
-	bind("T", hl.dsp.window.float())
-	bind("C", hl.dsp.window.center())
 
 	-- Window navigation
-	bind("Tab", hl.dsp.window.cycle_next())
 	bind("H", hy3.move_focus("l"))
 	bind("J", hy3.move_focus("u"))
 	bind("K", hy3.move_focus("d"))
@@ -216,19 +238,30 @@ if hy3 then
 	bind("SHIFT + K", hy3.move_window("d"))
 	bind("SHIFT + L", hy3.move_window("r"))
 
-	-- bind = $mainMod, P, submap, passthru # Passthrough SUPER key to virtual machine
-	-- submap = passthru
-	-- bind = SUPER, Escape, submap, reset # Get SUPER key back from virtual machine
-	-- submap = reset
-
-	-- Workspace management
-	bind("M", hl.dsp.workspace.toggle_special("m"))
-	bind("SHIFT + M", hl.dsp.window.move({ workspace = "special:m" }))
-
 	for i = 1, 10 do
 		local key = i % 10
 		bind(key, hl.dsp.focus({ workspace = i }))
 		bind("SHIFT + " .. key, hy3.move_to_workspace(i, { follow = true }))
+	end
+else
+	-- Window management
+	bind("SHIFT + Q", hl.dsp.window.close())
+
+	-- Window navigation
+	bind("H", hl.dsp.focus({ direction = "l" }))
+	bind("J", hl.dsp.focus({ direction = "d" }))
+	bind("K", hl.dsp.focus({ direction = "u" }))
+	bind("L", hl.dsp.focus({ direction = "r" }))
+	--
+	bind("SHIFT + H", hl.dsp.window.swap({ direction = "l" }))
+	bind("SHIFT + J", hl.dsp.window.swap({ direction = "d" }))
+	bind("SHIFT + K", hl.dsp.window.swap({ direction = "u" }))
+	bind("SHIFT + L", hl.dsp.window.swap({ direction = "r" }))
+	--
+	for i = 1, 10 do
+		local key = i % 10
+		bind(key, hl.dsp.focus({ workspace = i }))
+		bind("SHIFT + " .. key, hl.dsp.window.move({ workspace = i, follow = true }))
 	end
 end
 

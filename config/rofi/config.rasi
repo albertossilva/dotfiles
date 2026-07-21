@@ -1,19 +1,22 @@
+/* ---- Load pywal colors (custom wal template) ---- */
+@import "~/.cache/wal/colors-rofi-pywal"
+
+/* ---- Load font ---- */
+@import "~/.config/.settings/rofi-font.rasi"
+
+/* ---- Load border width ---- */
+@import "~/.config/.settings/rofi-border.rasi"
+
 /*****----- Configuration -----*****/
 configuration {
   modi:                       "drun";
-  font:                       "Fira Sans 13, FiraCode Nerd 13";
-  icon-theme: "kora";
+  icon-theme:                 "kora";
   show-icons:                 true;
   display-drun:               "󰍉";
   drun-display-format:        "{name}";
-
-
-    hover-select:               false;
-    window-format:              "{w} · {c} · {t}";
+  hover-select:               false;
+  window-format:              "{w} · {c} · {t}";
 }
-
-/* ---- Load pywal colors (custom wal template) ---- */
-@import "~/.cache/wal/colors-rofi-pywal"
 
 /*****----- Global Properties -----*****/
 * {
