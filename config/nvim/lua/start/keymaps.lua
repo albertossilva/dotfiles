@@ -26,12 +26,6 @@ keymap("n", "N", "Nzz", opts)
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
 
---Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
-
 --Moving lines
 keymap("n", "<C-j>", ":m .+1<CR>", opts)
 keymap("n", "<C-k>", ":m .-2<CR>", opts)
@@ -42,9 +36,6 @@ keymap("i", "<C-k>", "<ESC>:m .-2<CR>==gi", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
---Close buffers
-keymap("n", "<S-q>", ":Bdelete!<CR>", opts)
-
 --Better paste
 keymap("v", "p", '"_dP', opts)
 
@@ -52,11 +43,6 @@ keymap("v", "p", '"_dP', opts)
 --Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
-
---Plugins --
-
---NvimTree
-keymap("n", "<leader>re", ":NvimTreeFindFile<CR>", opts)
 
 --Line numbers
 keymap("n", "<F7>", ":set norelativenumber<cr>", opts)

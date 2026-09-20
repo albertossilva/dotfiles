@@ -9,29 +9,14 @@ return {
       vim.g.Illuminate_ftblacklist = filetypes.non_editable_filetypes
 
       illuminate.configure({
-        providers = {
-          "lsp",
-          "treesitter",
-          "regex",
-        },
-        -- delay: delay in milliseconds
+        providers = { "lsp", "treesitter", "regex" },
         delay = 120,
         filetypes_denylist = filetypes.non_editable_filetypes,
-        -- filetypes_allowlist: filetypes to illuminate, this is overriden by filetypes_denylist
         filetypes_allowlist = {},
-        -- modes_denylist: modes to not illuminate, this overrides modes_allowlist
         modes_denylist = {},
-        -- modes_allowlist: modes to illuminate, this is overriden by modes_denylist
         modes_allowlist = {},
-        -- providers_regex_syntax_denylist: syntax to not illuminate, this overrides providers_regex_syntax_allowlist
-        -- Only applies to the 'regex' provider
-        -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
         providers_regex_syntax_denylist = {},
-        -- providers_regex_syntax_allowlist: syntax to illuminate, this is overriden by providers_regex_syntax_denylist
-        -- Only applies to the 'regex' provider
-        -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
         providers_regex_syntax_allowlist = {},
-        -- under_cursor: whether or not to illuminate under the cursor
         under_cursor = true,
       })
     end,
@@ -209,17 +194,15 @@ return {
         k("b", "<cmd>Telescope buffers<cr>", "Buffers"),
         k("c", "<cmd>bdelete<CR>", "Close Buffer"),
         k("e", "<cmd>NvimTreeToggle<cr>", "Explorer", i(icons.explorer, "yellow")),
+        k("E", "<cmd<NvimTreeFindFile<cr>", "Reveal in Explorer", i(icons.explorer, "yellow")),
         k("F", "<cmd>Telescope live_grep theme=ivy<cr>", "Find (live grep)", i("󱪦", "purple")),
         k("k", "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy and go", i("󱎸", "green")),
-        k("n", "Next occurence", next_reference, i(icons.swapRight)),
+        k("n", next_reference, "Next occurence", i(icons.swapRight)),
         k("p", prev_reference, "Previous occurence", i(icons.swapLeft)),
-        k("w", "<cmd>w!<CR>", "Save", i(icons.save, "orange")),
-        k("/", "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Toggle Comment"),
+        k("/", "<cmd>CommentToggle<cr>", "Toggle Comment"),
 
         -- Hiding not wanted stuff
-        { "<leader>-", hidden = true },
         { "<leader>fmt", hidden = true },
-        { "<leader>r", hidden = true },
 
         -- Finders
         { "<leader>f", group = "Finders" },
@@ -230,7 +213,7 @@ return {
         k("ft", "<cmd>Telescope<cr>", "Telescope"),
         k("fr", "<cmd>Telescope oldfiles<cr>", "Open Recent File", i("󰔠", "orange")),
         k("fs", "<cmd>Telescope commands<cr>", "Commands", i("", "azure")),
-
+        --NvimTree
         -- Git
         { "<leader>g", group = "Git" },
         k("gb", "<cmd>Telescope git_branches<cr>", "Switch to branch", i("")),

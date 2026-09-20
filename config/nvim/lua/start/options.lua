@@ -9,22 +9,21 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 local options = {
-  backup = false,                                             -- creates a backup file
-  cmdheight = 1,                                              -- more space in the neovim command line for displaying messages
-  conceallevel = 0,                                           -- so that `` is visible in markdown files
-  fileencoding = "utf-8",                                     -- the encoding written to a file
-  hlsearch = true,                                            -- highlight all matches on previous search pattern
-  ignorecase = true,                                          -- ignore case in search patterns
+  backup = false, -- creates a backup file
+  cmdheight = 1, -- more space in the neovim command line for displaying messages
+  conceallevel = 0, -- so that `` is visible in markdown files
+  fileencoding = "utf-8", -- the encoding written to a file
+  hlsearch = true, -- highlight all matches on previous search pattern
+  ignorecase = true, -- ignore case in search patterns
   completeopt = { "menu", "menuone", "noinsert", "noselect" }, -- mostly just for cmp
-  pumheight = 10,                                             -- pop up menu height
+  pumheight = 10, -- pop up menu height
 
-  showtabline = 0,                                            -- always show tabs
-  smartcase = true,                                           -- smart case
-  smartindent = true,                                         -- make indenting smarter again
-  expandtab = true,                                           -- convert tabs to spaces
-  shiftwidth = 2,                                             -- the number of spaces inserted for each indentation
-
-  tabstop = 2,                                                -- insert 2 spaces for a tab
+  showtabline = 0, -- always show tabs
+  smartcase = true, -- smart case
+  smartindent = true, -- make indenting smarter again
+  expandtab = true, -- convert tabs to spaces
+  shiftwidth = 2, -- the number of spaces inserted for each indentation
+  tabstop = 2, -- insert 2 spaces for a tab
 
   -- split to right and below
   splitright = true,
@@ -33,19 +32,19 @@ local options = {
   -- exrc = true,                             -- disable write on auto commands
 
   -- non visible characters mapping
-  list = true,         -- show list characters
-  swapfile = false,    -- creates a swapfile
+  list = true, -- show list characters
+  swapfile = false, -- creates a swapfile
   termguicolors = true, -- set term gui colors (most terminals support this)
-  timeoutlen = 500,    -- time to wait for a mapped sequence to complete (in milliseconds)
-  undofile = true,     -- enable persistent undo
-  updatetime = 300,    -- faster completion (4000ms default)
+  timeoutlen = 500, -- time to wait for a mapped sequence to complete (in milliseconds)
+  undofile = true, -- enable persistent undo
+  updatetime = 300, -- faster completion (4000ms default)
   -- writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-  cursorline = true,   -- highlight the current line
-  laststatus = 3,      -- always show
-  numberwidth = 4,     -- set number column width
-  signcolumn = "yes",  -- always show the sign column, otherwise it would shift the text each time
-  wrap = false,        -- display lines as one long line
-  showcmd = true,      -- show last command used
+  cursorline = true, -- highlight the current line
+  laststatus = 3, -- always show
+  numberwidth = 4, -- set number column width
+  signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
+  wrap = false, -- display lines as one long line
+  showcmd = true, -- show last command used
 
   -- change window title from vim
   title = true,

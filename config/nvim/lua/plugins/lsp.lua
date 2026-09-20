@@ -54,6 +54,7 @@ return {
           },
         },
         rust_analyzer = {},
+        tombi = {},
         ts_ls = {
           settings = {
             typescript = {
@@ -198,9 +199,9 @@ return {
     end,
   },
   {
-    "numToStr/Comment.nvim",
+    "terrortylor/nvim-comment",
     config = function()
-      require("Comment").setup()
+      require("nvim_comment").setup()
     end,
   },
 }
