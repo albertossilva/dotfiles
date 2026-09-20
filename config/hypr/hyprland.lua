@@ -18,6 +18,7 @@ hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
+hl.env("QT_SCALE_FACTOR", "1.5")
 -- GDK
 hl.env("GDK_SCALE", "1")
 -- Toolkit Backend
@@ -83,9 +84,9 @@ hl.config({
 			render_power = 3,
 			color = colors.background,
 		},
-		active_opacity = 1.0,
-		inactive_opacity = 0.9,
-		fullscreen_opacity = 1.0,
+		active_opacity = 0.98,
+		inactive_opacity = 0.7,
+		fullscreen_opacity = 1,
 
 		blur = {
 			enabled = true,
@@ -96,7 +97,6 @@ hl.config({
 			vibrancy = 0.1696,
 		},
 	},
-	--
 	animations = {
 		enabled = false,
 	},
@@ -109,10 +109,10 @@ hl.curve("almostLinear", { type = "bezier", points = { { 0.5, 0.5 }, { 0.75, 1 }
 hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
 hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
 
-hl.animation({ leaf = "global", enabled = true, speed = 5, bezier = "default" })
-hl.animation({ leaf = "border", enabled = true, speed = 5.39, bezier = "easeOutQuint" })
-hl.animation({ leaf = "windows", enabled = true, speed = 4.79, spring = "easy" })
-hl.animation({ leaf = "windowsIn", enabled = true, speed = 4.1, spring = "easy", style = "popin 87%" })
+hl.animation({ leaf = "global", enabled = true, speed = 1.5, bezier = "default" })
+hl.animation({ leaf = "border", enabled = true, speed = 1.5, bezier = "easeOutQuint" })
+hl.animation({ leaf = "windows", enabled = true, speed = 1.5, spring = "easy" })
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 1.5, spring = "easy", style = "popin 87%" })
 hl.animation({ leaf = "windowsOut", enabled = true, speed = 1.49, bezier = "linear", style = "popin 87%" })
 hl.animation({ leaf = "fadeIn", enabled = true, speed = 1.73, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeOut", enabled = true, speed = 1.46, bezier = "almostLinear" })
@@ -123,7 +123,7 @@ hl.animation({ leaf = "layersOut", enabled = true, speed = 1.5, bezier = "linear
 hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 1.79, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "almostLinear" })
 hl.animation({ leaf = "workspaces", enabled = true, speed = 1, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1, bezier = "almostLinear", style = "fade" })
+hl.animation({ leaf = "workspacesIn", enabled = true, speed = 0.5, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
 
@@ -135,8 +135,10 @@ hl.config({
 
 hl.config({
 	misc = {
-		force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
-		disable_hyprland_logo = false, -- If true disables the random hyprland logo / anime girl background. :(
+		force_default_wallpaper = -1,
+		disable_hyprland_logo = false,
+		font_family = "Fira Sans",
+		close_special_on_empty = true,
 	},
 })
 
@@ -151,8 +153,9 @@ hl.config({
 		numlock_by_default = true,
 		mouse_refocus = false,
 		follow_mouse = 1,
+		repeat_rate = 40,
 
-		sensitivity = 0.05, -- -1.0 - 1.0, 0 means no modification.
+		sensitivity = 0.5, -- -1.0 - 1.0, 0 means no modification.
 
 		touchpad = {
 			natural_scroll = false,
@@ -333,6 +336,7 @@ set_workspace({ class = "Postman" }, 3)
 set_workspace({ class = "steam" }, 5)
 set_workspace({ class = "Spotify" }, 10)
 
+force_float("kitty", { opacity = "0.98 0.8 0.98", float = false })
 force_float("org.pulseaudio.pavucontrol", { size = "1000 600", pin = true })
 force_float("blueman-manager", { size = "800 500", pin = true })
 force_float("nm-connection-editor", { size = "900 600", pin = true })

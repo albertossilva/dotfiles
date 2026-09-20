@@ -11,10 +11,10 @@ selected=$(
 
 [ -n "$selected" ] || exit 0
 
-config="$HOME/.dotfiles/config/hypr/hyprpaper.conf"
 selected="$HOME/.config/wallpapers/$selected"
 
-sed -i "s|^\([[:space:]]*path[[:space:]]*=[[:space:]]*\).*|\1$selected|" "$config"
-hyprctl hyprpaper wallpaper ", $selected, cover"
-
 sh ~/.config/wallpapers/wallpaper.sh $selected
+
+cache="$HOME/.cache/wal/wallpaper-chosen"
+rm -f "$cache"
+echo "$selected" > "$cache"

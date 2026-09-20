@@ -27,6 +27,8 @@ window {
     border-radius:                4px;
     transparency:                 "real";
     background-color:             transparent;
+    width:                        100ch;
+    height:                        80ch;
 }
 
 /* ---- Mainbox ---- */

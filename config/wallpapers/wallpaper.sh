@@ -7,10 +7,18 @@ fi
 
 wallpaper=$1
 
+config="$HOME/.dotfiles/config/hypr/hyprpaper.conf"
+sed -i "s|^\([[:space:]]*path[[:space:]]*=[[:space:]]*\).*|\1$wallpaper|" "$config"
+hyprctl hyprpaper wallpaper ", $wallpaper, cover"
+
 echo ":: Execute pywal with $wallpaper."
 wallust run $wallpaper
 echo ":: Applying theme"
-source "$HOME/.cache/wal/colors.sh"
+# source "$HOME/.cache/wal/colors.sh"
+source "$HOME/.cache/wal/colors.gruvbox.sh"
+hyprctl reload
+pkill -9 walker
+hyprctl dispatch 'hl.dsp.exec_cmd("walker --gapplication-service")'
 
 generated_versions="$HOME/.cache/generated"
 blurred_wallpaper="$HOME/.cache/blurred_wallpaper.png"

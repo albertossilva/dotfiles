@@ -12,34 +12,28 @@ show_brightness_percentage = true
 [animations]
 enabled = true
 
-
-[appearance.menu]
-opacity = 0.7
-backdrop = 0.3
-
 [appearance]
 scale_factor = 1.6
 font_name = "MesloLGL Nerd Font"
-success_color = "#a6e3a1"
+success_color = "#D27B65"
 warning_color = "#f9e2af"
 danger_color = "#f38ba8"
-text_color = "#cdd6f4"
 
-workspace_colors = [ "#fab387", "#b4befe", "#cba6f7" ]
+background_color = "#080303"
+primary_color = "#55D3B3"
+text_color = "#859DB9"
 
-[appearance.primary_color]
-base = "#fab387"
-text = "#1e1e2e"
+workspace_colors = ["#55D3B3"]
+special_workspace_colors = ["#F3BA6E"]
 
-[appearance.background_color]
-base = "#1e1e2e"
-weak = "#313244"
-strong = "#45475a"
+[appearance.menu]
+opacity = 0.85
+backdrop = 0.3
 
 [modules]
-left = [ [ "appLauncher", "ai", "fileExplorer", "Workspaces" ] ]
-center = [ "Tempo" ]
-right = [ [ "Privacy", "Tray", "Updates", "Clipboard", "activityMonitor", "SystemInfo" ], [ "MediaPlayer", "Notifications", "Settings" ] ]
+left = [["appLauncher", "ai", "fileExplorer", "Workspaces"]]
+center = ["Tempo"]
+right = [["Privacy", "Tray", "Updates", "Clipboard", "SystemInfo"], ["MediaPlayer", "Notifications", "Settings"]]
 
 [media_player]
 indicator_format = "Icon"
@@ -47,25 +41,17 @@ indicator_format = "Icon"
 [tempo]
 clock_format = "%a %d, %b %R"
 weather_location = { City = "Tarragona" }
-timezones = [
-  "Europe/Madrid",
-  "America/Sao_Paulo",
-  "UTC"
-]
+timezones = ["Europe/Madrid", "America/Sao_Paulo", "UTC"]
 
 [notifications]
 format = "%H:%M"
 show_bodies = false
 grouped = true
 toast = true
-toast_position = "top_right"
+toast_position = "TopRight"
 toast_timeout = 1500
 toast_limit = 3
 toast_max_height = 150
-
-[window_title]
-mode = "Title"
-truncate_title_after_length = 400
 
 [[CustomModule]]
 name = "appLauncher"
@@ -83,11 +69,6 @@ icon = "󰪶"
 command = "sleep 0.1 && ~/config/.settings/filemanager.sh"
 
 [[CustomModule]]
-name = "activityMonitor"
-icon = "󰡳"
-command = "sleep 0.1 && ~/config/.settings/systeminfo.sh"
-
-[[CustomModule]]
 name = "Clipboard"
 icon = "󰅍"
 command = "sleep 0.1 && ~/.config/scripts/cliphist.sh"
@@ -96,22 +77,22 @@ command = "sleep 0.1 && ~/.config/scripts/cliphist.sh"
 visibility_mode = "All"
 group_by_monitor = false
 enable_workspace_filling = false
-workspace_names = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" ]
+workspace_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 [updates]
 check_cmd = "yay -Qu"
-update_cmd = 'kitty --class dotfiles-floating -e ~/.config/scripts/installUpdates.sh &'
+update_cmd = "kitty --class dotfiles-floating -e ~/.config/scripts/installUpdates.sh &"
 interval = 3600
 
 [settings]
-lock_cmd = '~/.config/scripts/power.sh lock &'
+lock_cmd = "~/.config/scripts/power.sh lock &"
 
 [[settings.PowerSettings]]
-shutdown_cmd = '~/.config/scripts/power.sh shutdown'
+shutdown_cmd = "~/.config/scripts/power.sh shutdown"
 suspend_cmd = "~/.config/scripts/power.sh suspend"
 hibernate_cmd = "~/.config/scripts/power.sh hibernate"
 reboot_cmd = "~/.config/scripts/power.sh reboot"
-logout_cmd = '~/.config/scripts/power.sh logout'
+logout_cmd = "~/.config/scripts/power.sh logout"
 
 [[settings.CustomButton]]
 name = "Wallpapers"

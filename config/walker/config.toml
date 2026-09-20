@@ -1,10 +1,12 @@
 close_when_open = true
 click_to_close = true
+selection_wrap = true
+theme = "my-theme"
 
 [keybinds]
 close = ["Escape"]
-next = ["ctrl j", "Down", "Tab"]
-previous = ["ctrl k", "Up"]
+next = ["ctrl j", "Tab"]
+previous = ["ctrl k"]
 toggle_exact = ["ctrl e"]           # Toggle exact search mode
 resume_last_query = ["ctrl r"]      # Resume last query (service mode)
 quick_activate = ["F1", "F2", "F3", "F4"]  # Quick activation keys
@@ -17,3 +19,16 @@ default = [
 ]
 empty = ["desktopapplications"]
 
+[placeholders]
+# Default placeholder for all providers
+"default" = { input = "Search", list = "No Results" }
+
+# Provider-specific placeholders
+"desktopapplications" = { input = "Launch App", list = "No Applications" }
+"files" = { input = "Browse Files", list = "No Files Found" }
+"calc" = { input = "Calculate", list = "Enter Expression" }
+"runner" = { input = "Run Command", list = "No Commands" }
+"websearch" = { input = "Search Web", list = "" }
+"clipboard" = { input = "Clipboard", list = "Clipboard Empty" }
+"symbols" = { input = "Symbol", list = "No Symbols" }
+"todo" = { input = "Todo", list = "No Todos" }

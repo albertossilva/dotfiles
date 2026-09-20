@@ -74,7 +74,12 @@ check_contrast = true
 #   max_depth only when template/target are directories - limits recursion depth
 # Examples:
 rofi  = { template = 'config-rofi-pywal.rasi',  target = '~/.cache/wal/config-rofi-pywal.rasi' }
-ashell  = { template = 'config-ashell.toml',  target = '~/.cache/wal/config-ashell.toml' }
+ashell  = { template = 'config-ashell.toml',  target = '~/config/ashell/config.toml' }
+hyprpaper  = { template = 'hyprpaper.conf',  target = '~/config/hypr/hyprpaper.conf' }
+colors_shell  = { template = 'colors.sh',  target = '~/.cache/wal/colors.sh' }
+walker  = { template = 'walker-style.css',  target = '~/.config/walker/themes/my-theme/style.css' }
+hyprland  = { template = 'colors-hyprland.lua',  target = '~/.cache/wal/colors-hyprland.lua' }
+
 #   dunst    = { template = 'dunst',    target = '~/.config/dunst/dunstrc' }
 #   kitty    = { template = 'kitty',    target = '~/.config/kitty/kitty.conf' }
 #   # directory: template every file inside src/ into dst/
