@@ -1,49 +1,46 @@
---Shorten function name
-local keymap = vim.keymap.set
---Silent keymap option
-local opts = { noremap = true, silent = true }
+local function map(mode, previous, command)
+  vim.keymap.set(mode, previous, command, { noremap = true, silent = true })
+end
 
 --Don not use arrow keys
-keymap("n", "<Up>", "<NOP>", opts)
-keymap("n", "<Down>", "<NOP>", opts)
-keymap("n", "<Left>", "<NOP>", opts)
-keymap("n", "<Right>", "<NOP>", opts)
+map("n", "<Up>", "<NOP>")
+map("n", "<Down>", "<NOP>")
+map("n", "<Left>", "<NOP>")
+map("n", "<Right>", "<NOP>")
 
 --Remap space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
---Normal --
 --Better window navigation
-keymap("n", "<C-H>", "<C-w>h", opts)
-keymap("n", "<C-J>", "<C-w>j", opts)
-keymap("n", "<C-K>", "<C-w>k", opts)
-keymap("n", "<C-L>", "<C-w>l", opts)
+map("n", "<C-H>", "<C-w>h")
+map("n", "<C-J>", "<C-w>j")
+map("n", "<C-K>", "<C-w>k")
+map("n", "<C-L>", "<C-w>l")
 
 --Center screen on finding / scrolling
-keymap("n", "n", "nzz", opts)
-keymap("n", "N", "Nzz", opts)
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-u>", "<C-u>zz", opts)
+map("n", "n", "nzz")
+map("n", "N", "Nzz")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 
 --Moving lines
-keymap("n", "<C-j>", ":m .+1<CR>", opts)
-keymap("n", "<C-k>", ":m .-2<CR>", opts)
-keymap("i", "<C-j>", "<ESC>:m .+1<CR>==gi", opts)
-keymap("i", "<C-k>", "<ESC>:m .-2<CR>==gi", opts)
+map("n", "<C-j>", ":m .+1<CR>")
+map("n", "<C-k>", ":m .-2<CR>")
+map("i", "<C-j>", "<ESC>:m .+1<CR>==gi")
+map("i", "<C-k>", "<ESC>:m .-2<CR>==gi")
 
 --Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+map("n", "<S-l>", ":bnext<CR>")
+map("n", "<S-h>", ":bprevious<CR>")
 
 --Better paste
-keymap("v", "p", '"_dP', opts)
+map("v", "p", '"_dP')
 
---Visual --
 --Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+map("v", "<", "<gv")
+map("v", ">", ">gv")
 
 --Line numbers
-keymap("n", "<F7>", ":set norelativenumber<cr>", opts)
-keymap("n", "<F8>", ":set relativenumber<cr>", opts)
+map("n", "<F7>", ":set norelativenumber<cr>")
+map("n", "<F8>", ":set relativenumber<cr>")

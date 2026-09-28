@@ -1,12 +1,4 @@
--- clear autogroup first to prevent it running multiple times
 vim.api.nvim_create_augroup("options_user_config", { clear = true })
-
--- autocommand to reload options.lua when saving
-vim.api.nvim_create_autocmd("BufWritePost", {
-  group = "options_user_config",
-  pattern = "options.lua",
-  command = "source <afile>",
-})
 
 local options = {
   backup = false, -- creates a backup file

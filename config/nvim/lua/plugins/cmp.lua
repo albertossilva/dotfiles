@@ -10,15 +10,7 @@ return {
     { "L3MON4D3/LuaSnip", version = "v2.*", dependencies = { "rafamadriz/friendly-snippets" } },
   },
   config = function()
-    -- ensure cmp and luasnip exists
-    local dependencies = { "cmp", "luasnip" }
-    local status_ok, deps = require("utils.prequire")(dependencies, "Failed to start cmp.lua")
-    if not status_ok then
-      return
-    end
-
-    local cmp, luasnip = unpack(deps)
-    local icons = require("utils.icons")
+    local cmp, luasnip, icons = require("cmp"), require("luasnip"), require("utils.icons")
     local item_menu = {
       buffer = "[Buffer]",
       nvim_lua = "[nvim_lua]",
