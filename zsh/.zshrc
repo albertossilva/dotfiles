@@ -120,10 +120,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 # LOCAL
-export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git"
+export FZF_DEFAULT_COMMAND="fd --type file --hidden --color=auto --exclude .git --exclude node_modules --exclude stryker-incremental.json"
 # Fuzzy finder
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$HOME/.fzf/bin:$PATH"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"

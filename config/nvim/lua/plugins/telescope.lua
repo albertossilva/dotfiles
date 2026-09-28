@@ -22,7 +22,13 @@ return {
         },
         defaults = {
           sorting_strategy = "ascending",
-          file_ignore_patterns = { "node_modules", "dist", "artifacts", "package-lock.json" },
+          file_ignore_patterns = {
+            "node_modules",
+            "dist",
+            "artifacts",
+            "package-lock.json",
+            "stryker-incremental.json",
+          },
           file_sorter = require("telescope.sorters").get_fuzzy_file,
           generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
           path_display = { "smart" },
@@ -47,6 +53,12 @@ return {
               ["<C-n>"] = actions.cycle_history_next,
               ["<C-p>"] = actions.cycle_history_prev,
             },
+          },
+        },
+
+        pickers = {
+          live_grep = {
+            additional_args = { "--glob", "!**/stryker-incremental.json" },
           },
         },
       })
