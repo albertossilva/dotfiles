@@ -11,4 +11,4 @@ require("init.options")
 require("init.autocmds")
 
 -- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+require("init.lazy")
