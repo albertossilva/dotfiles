@@ -1,0 +1,15 @@
+font-size = 16
+font-family =  MesloLGL Nerd Font
+
+env = TERM=xterm-256color
+
+theme = Gruvbox Dark Hard
+
+background-blur-radius = 20
+background-opacity = 0.95
+
+mouse-hide-while-typing = true
+
+window-padding-x = 4
+window-padding-y = 4
+window-decoration = false
